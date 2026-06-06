@@ -91,23 +91,33 @@
         .product-price { font-size: 15px; font-weight: 700; color: var(--text-main); }
         .view-detail-text { font-size: 11px; color: var(--accent-pastel); font-weight: 500; }
 
-        /* DETAY VE SEPET MODALLARI */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(3px);
-            display: none; /* Varsayılan gizli */
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            cursor: pointer; /* Boşluğun tıklanabilir olduğunu belirtir */
+        /* MODAL ARKA PLAN VE RENK DÜZELTMESİ */
+        .modal-overlay { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(43, 45, 66, 0.6); /* Sayfayı şık bir antrasit tonuyla karartır */
+            backdrop-filter: blur(4.5px); /* Arkadaki ana sayfayı hafifçe flulaştırır */
+            display: none; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 2000; 
+            cursor: pointer; 
         }
         
-        /* İçerik kutusuna tıklandığında pencerenin kapanmasını önlemek için */
-        .modal-box {
+        .modal-box { 
+            background: #ffffff !important; /* Kutunun rengini saf beyaz yapar */
+            color: #2b2d42 !important; /* Yazıların okunabilir kalmasını sağlar */
+            border-radius: 16px; 
+            padding: 25px; 
+            position: relative; 
+            max-height: 90vh; 
+            overflow-y: auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
             cursor: default; 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Kutuya derinlik katacak gölge */
         }
         .modal-close { position: absolute; top: 15px; right: 15px; font-size: 22px; cursor: pointer; color: var(--text-muted); transition: 0.3s; }
         .modal-close:hover { color: var(--text-main); }
