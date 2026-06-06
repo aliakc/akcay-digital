@@ -20,6 +20,7 @@
             --border-color: #ece7e1;   /* Pastel Çizgi */
             --whatsapp-color: #25D366;  /* WhatsApp Yeşili */
             --header-bg: #f1ebe1;      /* Sayfayla Uyumlu Üst Çubuk Rengi */
+            --turquoise-color: #2ec4b6; /* Turkuaz İstek Rengi */
         }
         body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
 
@@ -36,7 +37,7 @@
         
         .nav-container { display: flex; align-items: center; }
         
-        /* Menü Linkleri (21px) */
+        /* Menü Linkleri */
         nav { display: flex; align-items: center; }
         nav a { color: var(--text-main); text-decoration: none; font-weight: 500; margin-left: 30px; font-size: 21px; transition: 0.3s; }
         nav a:hover { color: var(--accent-pastel); }
@@ -83,13 +84,13 @@
         .section-title { text-align: center; font-size: 39px; margin-bottom: 15px; font-weight: 700; color: var(--text-main); }
         .section-title span { color: var(--accent-pastel); font-weight: 400; }
 
-        /* KATEGORİ BARU */
+        /* KATEGORİ BARI */
         .category-bar-container { display: flex; justify-content: center; margin-bottom: 30px; position: sticky; top: 68px; background: rgba(252, 250, 246, 0.95); padding: 12px 0; z-index: 900; border-bottom: 1px solid var(--border-color); }
         .category-buttons { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
         .category-btn { background: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-color); padding: 9px 22px; border-radius: 30px; font-size: 15px; font-weight: 500; cursor: pointer; transition: 0.3s; }
         .category-btn:hover, .category-btn.active { background: var(--accent-pastel); color: white; border-color: var(--accent-pastel); }
 
-        /* ÜRÜN GRID SİSTEMİ (KATEGORİ METNİ KALDIRILDI) */
+        /* ÜRÜN GRID SİSTEMİ */
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
         .product-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: 0.3s; cursor: pointer; }
         .product-card.fade { animation: fadeIn 0.4s ease; }
@@ -136,10 +137,15 @@
         .qty-btn { background: var(--accent-light); border: 1px solid var(--border-color); width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-weight: 600; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .qty-btn:hover { background: var(--accent-pastel); color: white; }
         .qty-input { width: 45px; height: 32px; text-align: center; border: 1px solid var(--border-color); border-radius: 6px; font-weight: 600; background: var(--bg-color); }
+        
         .add-to-cart-btn { background: var(--text-main); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 13px; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s; }
         .add-to-cart-btn:hover { background: var(--accent-pastel); }
         
-        /* SEPET TASARIMI */
+        /* SEPETİ GİT BUTONU - SABİT TURKUAZ TONU */
+        .go-to-cart-btn { background: var(--turquoise-color) !important; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 13px; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s; }
+        .go-to-cart-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* SEPET TASARIMI VE BUTON YERLEŞİM GÜNCELLEMESİ */
         .cart-table-header { display: grid; grid-template-columns: 3fr 1fr 1.2fr 1fr 0.4fr; border-bottom: 2px solid var(--text-main); padding-bottom: 10px; margin-top: 15px; font-size: 12px; font-weight: 700; color: var(--text-main); text-transform: uppercase; }
         .cart-item-list { max-height: 40vh; overflow-y: auto; }
         .cart-row { display: grid; grid-template-columns: 3fr 1fr 1.2fr 1fr 0.4fr; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--border-color); }
@@ -154,12 +160,16 @@
         .cart-qty-num { width: 32px; text-align: center; font-size: 13px; font-weight: 600; border: none; background: transparent; }
         .cart-row-remove { color: var(--text-muted); cursor: pointer; font-size: 15px; transition: 0.2s; text-align: center; }
         .cart-row-remove:hover { color: #e63946; }
+        
         .cart-summary-wrapper { display: flex; flex-direction: column; align-items: flex-end; margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px; }
         .cart-summary-line { display: flex; justify-content: space-between; width: 240px; font-size: 14px; margin-bottom: 6px; color: var(--text-muted); }
         .cart-summary-total { display: flex; justify-content: space-between; width: 240px; font-size: 22px; font-weight: 700; color: var(--text-main); margin-top: 5px; margin-bottom: 15px; }
-        .cart-action-btn-group { display: flex; justify-content: space-between; width: 100%; align-items: center; margin-top: 15px; }
-        .continue-shopping-link { color: #e63946; text-decoration: none; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 5px; cursor: pointer; }
-        .cart-submit-red-btn { background: #e63946; color: white; text-decoration: none; padding: 12px 35px; border-radius: 4px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; transition: 0.3s; border: none; }
+        
+        /* BUTONLARIN BİRBİRİNE GİRMESİNİ ENGELLEYEN GÜNCEL FLEX ALANI */
+        .cart-action-btn-group { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: 25px; padding-top: 10px; flex-wrap: wrap; gap: 15px; }
+        .continue-shopping-link { color: #e63946; text-decoration: none; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; user-select: none; padding: 5px 0; }
+        .continue-shopping-link:hover { text-decoration: underline; }
+        .cart-submit-red-btn { background: #e63946; color: white; text-decoration: none; padding: 12px 35px; border-radius: 6px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; border: none; cursor: pointer; }
         .cart-submit-red-btn:hover { background: #c92a36; box-shadow: 0 4px 12px rgba(230, 57, 70, 0.2); }
 
         /* ÖZEL İSTEK BÖLÜMÜ */
@@ -217,7 +227,7 @@
         .error-text { color: #e63946; }
         footer { text-align: center; padding: 30px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 12px; background: var(--card-bg); }
 
-        /* MOBİL VE TABLET UYUM AYARLARI */
+        /* MOBİL UYUM AYARLARI */
         @media (max-width: 992px) { 
             .special-container, .about-container { grid-template-columns: 1fr; flex-direction: column; gap: 30px; } 
             .about-visual { height: 220px; } 
@@ -244,6 +254,8 @@
             .section-title { font-size: 26px; } 
             .category-bar-container { top: 55px; } 
             #modalDetailContent { grid-template-columns: 1fr; } 
+            .cart-action-btn-group { flex-direction: column-reverse; align-items: center; text-align: center; }
+            .cart-submit-red-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -465,7 +477,6 @@
             return results;
         }
 
-        // ANA SAYFA KUTUCUKLARINDAN KATEGORİ İSMİ KALDIRILDI
         function renderProducts(products) {
             const gridElement = document.getElementById('dynamicProductsGrid');
             gridElement.innerHTML = '';
@@ -502,7 +513,6 @@
             });
         }
 
-        // ÇOKLU RESİM VE LIGHTBOX DESTEKLİ DETAY SAYFASI
         function openProductDetail(uniqueId) {
             const product = allProducts.find(p => p.unique_id === uniqueId);
             if (!product) return;
@@ -516,12 +526,10 @@
             let displayPrice = product.price.toString();
             if (!displayPrice.includes('TL')) { displayPrice += ' TL'; }
 
-            // Resim listesini hazırlayalım (Boş olmayanları ekle)
             const images = [product.img];
             if (product.img2 && product.img2.trim() !== "") images.push(product.img2.trim());
             if (product.img3 && product.img3.trim() !== "") images.push(product.img3.trim());
 
-            // Küçük önizleme resim butonlarını oluştur (Sadece 1'den fazla resim varsa gösterilir)
             let thumbnailsHtml = "";
             if (images.length > 1) {
                 thumbnailsHtml = `<div class="detail-thumbnails">`;
@@ -554,7 +562,7 @@
                         </div>
                         <div style="display: flex; gap: 10px;">
                             <button class="add-to-cart-btn" onclick="addMultipleToCart('${product.unique_id}')" style="flex: 2;"><i class="fa-solid fa-cart-plus"></i> Sepete Ekle</button>
-                            <button class="add-to-cart-btn" onclick="toggleProductModal(false); toggleCartModal(true);" style="flex: 1.2; background: var(--accent-pastel);"><i class="fa-solid fa-basket-shopping"></i> Sepete Git</button>
+                            <button class="go-to-cart-btn" onclick="toggleProductModal(false); toggleCartModal(true);" style="flex: 1.2;"><i class="fa-solid fa-basket-shopping"></i> Sepete Git</button>
                         </div>
                     </div>
                 </div>
@@ -563,7 +571,6 @@
             toggleProductModal(true);
         }
 
-        // Küçük resme tıklayınca ana resmi değiştiren fonksiyon
         function switchDetailImage(imgUrl, thumbElement) {
             document.getElementById('mainDetailImage').src = imgUrl;
             const thumbs = document.querySelectorAll('.thumb-img');
@@ -571,7 +578,6 @@
             thumbElement.classList.add('active');
         }
 
-        // RESMİ BÜYÜK EKRANDA GÖSTERME (LIGHTBOX) FONKSİYONLARI
         function openLightbox() {
             const currentImgSrc = document.getElementById('mainDetailImage').src;
             const lightbox = document.getElementById('imageLightbox');
@@ -580,9 +586,7 @@
             lightbox.classList.add('active');
         }
 
-        function closeLightbox() {
-            document.getElementById('imageLightbox').classList.remove('active');
-        }
+        function closeLightbox() { document.getElementById('imageLightbox').classList.remove('active'); }
 
         function changeDetailQty(amount) {
             const qtyInput = document.getElementById('detailQtyInput');
@@ -654,9 +658,16 @@
             htmlContent += `</div>`; 
             const kdvAmount = subTotal * 0.20; 
             const grandTotal = subTotal + kdvAmount; 
-            htmlContent += `<div class="cart-summary-wrapper"><div class="cart-summary-line"><span>Toplam:</span><span>${subTotal.toLocaleString('tr-TR')} TL</span></div><div class="cart-summary-line"><span>KDV (%20):</span><span>${kdvAmount.toLocaleString('tr-TR')} TL</span></div><div style="width: 240px; border-top: 1px dashed var(--border-color); margin: 5px 0;"></div><div class="cart-summary-total"><span style="font-size: 14px; font-weight:600; color:var(--text-muted); GENEL TOPLAM:</span><span>${grandTotal.toLocaleString('tr-TR')} TL</span></div></div>`;
+            htmlContent += `<div class="cart-summary-wrapper"><div class="cart-summary-line"><span>Toplam:</span><span>${subTotal.toLocaleString('tr-TR')} TL</span></div><div class="cart-summary-line"><span>KDV (%20):</span><span>${kdvAmount.toLocaleString('tr-TR')} TL</span></div><div style="width: 240px; border-top: 1px dashed var(--border-color); margin: 5px 0;"></div><div class="cart-summary-total"><span style="font-size: 14px; font-weight:600; color:var(--text-muted);">GENEL TOPLAM:</span><span>${grandTotal.toLocaleString('tr-TR')} TL</span></div></div>`;
             whatsappMessageText += `\n-----------------------\n💰 *Ara Toplam:* ${subTotal.toLocaleString('tr-TR')} TL\n🌾 *KDV (%20):* ${kdvAmount.toLocaleString('tr-TR')} TL\n🧮 *GENEL TOPLAM:* ${grandTotal.toLocaleString('tr-TR')} TL\n\nSiparişimi onaylamak istiyorum.`;
-            htmlContent += `<div class="cart-action-btn-group"><a class="continue-shopping-link" onclick="toggleCartModal(false)"><i class="fa-solid fa-chevron-left"></i> Alışverişe Devam Et</a><a href="https://wa.me/905326180952?text=${encodeURIComponent(whatsappMessageText)}" target="_blank" class="cart-submit-red-btn">SATIN AL <i class="fa-brands fa-whatsapp" style="font-size:16px;"></i></a></div>`;
+            
+            // HİZALAMA SORUNU GİDERİLMİŞ BUTON GRUBU
+            htmlContent += `
+                <div class="cart-action-btn-group">
+                    <a class="continue-shopping-link" onclick="toggleCartModal(false)"><i class="fa-solid fa-chevron-left"></i> Alışverişe Devam Et</a>
+                    <a href="https://wa.me/905326180952?text=${encodeURIComponent(whatsappMessageText)}" target="_blank" class="cart-submit-red-btn">SATIN AL <i class="fa-brands fa-whatsapp" style="font-size:16px;"></i></a>
+                </div>
+            `;
             container.innerHTML = htmlContent;
         }
 
@@ -697,20 +708,16 @@
             indicator.style.display = "block";
 
             const reader = new FileReader();
-            reader.onload = function(e) {
-                selectedFileBase64 = e.target.result.split(',')[1];
-            };
+            reader.onload = function(e) { selectedFileBase64 = e.target.result.split(',')[1]; };
             reader.readAsDataURL(file);
         }
 
         async function handleSpecialRequestSubmit(event) {
             event.preventDefault();
-            
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
             const submitBtn = document.getElementById('submitFormBtn');
-            
             let fileLinkText = "Dosya eklenmedi.";
             
             if (selectedFileBase64) {
@@ -723,11 +730,7 @@
                     const fileInput = document.getElementById('specialFile');
                     formData.append('file', fileInput.files[0]);
                     
-                    const uploadResponse = await fetch('https://tmpfiles.org/api/v1/upload', {
-                        method: 'POST',
-                        body: formData
-                    });
-                    
+                    const uploadResponse = await fetch('https://tmpfiles.org/api/v1/upload', { method: 'POST', body: formData });
                     if (uploadResponse.ok) {
                         const uploadResult = await uploadResponse.json();
                         const rawUrl = uploadResult.data.url;
