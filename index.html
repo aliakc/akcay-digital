@@ -91,13 +91,13 @@
         .product-price { font-size: 15px; font-weight: 700; color: var(--text-main); }
         .view-detail-text { font-size: 11px; color: var(--accent-pastel); font-weight: 500; }
 
-        /* MODAL ARKA PLAN VE RENK DÜZELTMESİ */
+        /* MODAL ARKA PLAN (Daha Derin Karartı ve Sabit Genişlik) */
         .modal-overlay { 
             position: fixed; 
             top: 0; left: 0; 
             width: 100%; height: 100%; 
-            background: rgba(43, 45, 66, 0.6); /* Sayfayı şık bir antrasit tonuyla karartır */
-            backdrop-filter: blur(4.5px); /* Arkadaki ana sayfayı hafifçe flulaştırır */
+            background: rgba(25, 26, 38, 0.75); /* İstediğin gibi arkasını biraz daha kararttık */
+            backdrop-filter: blur(5px); 
             display: none; 
             justify-content: center; 
             align-items: center; 
@@ -105,19 +105,37 @@
             cursor: pointer; 
         }
         
+        /* HEM DETAY HEM SEPET İÇİN TEK VE SABİT ÖLÇÜ */
         .modal-box { 
-            background: #ffffff !important; /* Kutunun rengini saf beyaz yapar */
-            color: #2b2d42 !important; /* Yazıların okunabilir kalmasını sağlar */
+            background: #ffffff !important; 
+            color: #2b2d42 !important; 
             border-radius: 16px; 
-            padding: 25px; 
+            padding: 30px; 
             position: relative; 
+            
+            /* SÜPER FIX: Genişliği sepet sayfasıyla aynı ölçüde 850px'e kilitledik */
+            width: 95%;
+            max-width: 850px; 
+            min-height: 450px; /* Kutunun çok basık durmasını önlemek için ideal alt sınır */
+            
             max-height: 90vh; 
             overflow-y: auto; 
             display: flex; 
             flex-direction: column; 
             gap: 20px; 
             cursor: default; 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Kutuya derinlik katacak gölge */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); 
+        }
+
+        /* Detay içindeki iki kolonlu düzenin taşmasını önleme ayarı */
+        #modalDetailContent {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            width: 100%;
+        }
+        @media (max-width: 768px) { 
+            #modalDetailContent { grid-template-columns: 1fr; } 
         }
         .modal-close { position: absolute; top: 15px; right: 15px; font-size: 22px; cursor: pointer; color: var(--text-muted); transition: 0.3s; }
         .modal-close:hover { color: var(--text-main); }
@@ -553,7 +571,7 @@
     <div class="modal-overlay" id="productModal">
         <div class="modal-box">
             <span class="modal-close" onclick="toggleProductModal(false)">&times;</span>
-            <div class="detail-container" id="modalDetailContent"></div>
+            <div id="modalDetailContent"></div>
         </div>
     </div>
 
