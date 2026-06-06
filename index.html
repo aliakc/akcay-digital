@@ -19,7 +19,7 @@
             --accent-light: #f5f0e6;   /* Hafif Krem Kahve */
             --border-color: #ece7e1;   /* Pastel Çizgi */
             --whatsapp-color: #25D366;  /* WhatsApp Yeşili */
-            --header-bg: #f1ebe1;      /* Sayfayla Uyumlu Yeni Farklı Üst Çubuk Rengi */
+            --header-bg: #f1ebe1;      /* Sayfayla Uyumlu Üst Çubuk Rengi */
         }
         body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
 
@@ -34,15 +34,14 @@
         .logo { font-size: 24px; font-weight: 700; color: var(--text-main); text-decoration: none; letter-spacing: 1px; flex-shrink: 0; }
         .logo span { color: var(--accent-pastel); font-weight: 400; }
         
-        /* Menü Grubu Ek Alanı */
         .nav-container { display: flex; align-items: center; }
         
-        /* Menü Linkleri (1.5 Kat Büyütüldü: 14px -> 21px) */
+        /* Menü Linkleri (21px) */
         nav { display: flex; align-items: center; }
         nav a { color: var(--text-main); text-decoration: none; font-weight: 500; margin-left: 30px; font-size: 21px; transition: 0.3s; }
         nav a:hover { color: var(--accent-pastel); }
         
-        /* Mobil Menü Açma Çizgileri (Hamburger İkonu) - Masaüstünde Gizli */
+        /* Hamburger İkonu */
         .menu-toggle { display: none; font-size: 26px; color: var(--text-main); cursor: pointer; margin-left: 20px; }
         
         .cart-icon-container { position: relative; margin-left: 30px; cursor: pointer; }
@@ -64,15 +63,8 @@
         .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(252,250,246,0.2) 0%, rgba(252,250,246,0.85) 80%); z-index: 1; }
         
         .hero-content { 
-            position: relative; 
-            z-index: 2; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
+            position: relative; z-index: 2; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center; max-width: 1200px; margin: 0 auto;
         }
         .hero h1 { font-size: 38px; font-weight: 700; margin-bottom: 25px; color: var(--text-main); line-height: 1.2; text-align: center; white-space: nowrap; }
         .hero h1 span { color: var(--accent-pastel); }
@@ -88,14 +80,12 @@
 
         /* BÖLÜMLER */
         section { padding: 60px 8%; }
-        /* Koleksiyon Kataloğu Başlığı 1.5 Kat Büyütüldü (26px -> 39px) */
         .section-title { text-align: center; font-size: 39px; margin-bottom: 15px; font-weight: 700; color: var(--text-main); }
         .section-title span { color: var(--accent-pastel); font-weight: 400; }
 
         /* KATEGORİ BARU */
         .category-bar-container { display: flex; justify-content: center; margin-bottom: 30px; position: sticky; top: 68px; background: rgba(252, 250, 246, 0.95); padding: 12px 0; z-index: 900; border-bottom: 1px solid var(--border-color); }
         .category-buttons { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-        /* Kategori Başlıkları 2 Punto Büyütüldü (13px -> 15px) */
         .category-btn { background: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-color); padding: 9px 22px; border-radius: 30px; font-size: 15px; font-weight: 500; cursor: pointer; transition: 0.3s; }
         .category-btn:hover, .category-btn.active { background: var(--accent-pastel); color: white; border-color: var(--accent-pastel); }
 
@@ -175,8 +165,19 @@
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 600; }
         .form-control { width: 100%; padding: 12px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-main); font-size: 14px; }
-        .submit-btn { width: 100%; padding: 12px; background: var(--text-main); color: #ffffff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        
+        /* Özel Dosya Yükleme Alanı Tasarımı */
+        .file-upload-wrapper { position: relative; margin-bottom: 15px; }
+        .file-upload-btn-custom { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--accent-light); border: 2px dashed var(--accent-pastel); padding: 15px; border-radius: 8px; cursor: pointer; text-align: center; transition: 0.3s; }
+        .file-upload-btn-custom:hover { background: #efe6d8; }
+        .file-upload-btn-custom i { font-size: 20px; color: var(--accent-pastel); }
+        .file-upload-btn-custom span { font-size: 13px; font-weight: 500; color: var(--text-main); }
+        .file-upload-wrapper input[type="file"] { position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
+        .file-name-indicator { font-size: 12px; color: #2ec4b6; font-weight: 600; margin-top: 5px; display: none; text-align: center; }
+
+        .submit-btn { width: 100%; padding: 12px; background: var(--text-main); color: #ffffff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
         .submit-btn:hover { background: var(--accent-pastel); }
+        .submit-btn:disabled { background: var(--text-muted); cursor: not-allowed; }
 
         /* HAKKIMIZDA & İLETİŞİM */
         .about-section { background: var(--card-bg); border-bottom: 1px solid var(--border-color); }
@@ -203,7 +204,7 @@
         .error-text { color: #e63946; }
         footer { text-align: center; padding: 30px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 12px; background: var(--card-bg); }
 
-        /* MOBİL VE TABLET UYUM AYARLARI (AÇILIR MENÜ ALTYAPISI) */
+        /* MOBİL VE TABLET UYUM AYARLARI */
         @media (max-width: 992px) { 
             .special-container, .about-container { grid-template-columns: 1fr; flex-direction: column; gap: 30px; } 
             .about-visual { height: 220px; } 
@@ -211,39 +212,23 @@
         
         @media (max-width: 768px) { 
             header { padding: 15px 5%; } 
-            
-            /* Hamburger Menü Çizgisini Görünür Yap */
             .menu-toggle { display: block; }
-            
-            /* Menüyü dikey açılır kutuya çevir */
             nav { 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                width: 100%; 
-                background: var(--header-bg); 
-                border-bottom: 1px solid var(--border-color);
-                flex-direction: column; 
-                align-items: flex-start;
-                padding: 20px 5%;
-                gap: 15px;
-                display: none; /* Varsayılan olarak kapalı */
-                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                position: absolute; top: 100%; left: 0; width: 100%; background: var(--header-bg); 
+                border-bottom: 1px solid var(--border-color); flex-direction: column; align-items: flex-start;
+                padding: 20px 5%; gap: 15px; display: none; box-shadow: 0 10px 15px rgba(0,0,0,0.05);
             }
-            /* Menü açıldığında tetiklenecek sınıf */
             nav.active { display: flex; }
-            
             nav a { margin-left: 0; font-size: 18px; width: 100%; padding: 5px 0; } 
             .cart-icon-container { margin-left: 0; padding-top: 5px; }
             
-            /* Hero yazıları mobilde taşmasın */
             .hero h1 { font-size: 24px; white-space: normal; } 
             .hero p { font-size: 13px; white-space: normal; }
             .btn-group { flex-direction: column; gap: 10px; width: 100%; }
             .hero-btn { width: 100%; max-width: 280px; }
             
             section { padding: 40px 5%; } 
-            .section-title { font-size: 26px; } /* Mobilde başlık makul boyuta düşsün */
+            .section-title { font-size: 26px; } 
             .category-bar-container { top: 55px; } 
             #modalDetailContent { grid-template-columns: 1fr; } 
         }
@@ -253,7 +238,6 @@
 
     <header>
         <a href="#" class="logo">AKÇAY <span>DİJİTAL</span></a>
-        
         <div class="nav-container">
             <nav id="navMenu">
                 <a href="#" onclick="closeMenu()">Ana Sayfa</a>
@@ -286,7 +270,6 @@
 
     <section id="products">
         <h2 class="section-title">Koleksiyon <span>Kataloğu</span></h2>
-        
         <div class="category-bar-container">
             <div class="category-buttons">
                 <button class="category-btn active" onclick="filterCategory('all', this)">Tüm Ürünler</button>
@@ -297,7 +280,6 @@
                 <button class="category-btn" onclick="filterCategory('ozel', this)">Kişiye Özel Ürünler</button>
             </div>
         </div>
-
         <div class="products-grid" id="dynamicProductsGrid">
             <div class="status-message">Ürünler yükleniyor, lütfen bekleyin...</div>
         </div>
@@ -311,7 +293,7 @@
                 <ul class="step-list">
                     <li class="step-item">
                         <div class="step-number">1</div>
-                        <div class="step-text"><h4>Formu Doldurun</h4><p>Aklınızdaki fikri, boyutları ve renk tercihinizi bize iletin.</p></div>
+                        <div class="step-text"><h4>Formu Doldurun</h4><p>Aklınızdaki fikri, boyutları, renk tercihinizi girin ve varsa dosyanızı ekleyin.</p></div>
                     </li>
                     <li class="step-item">
                         <div class="step-number">2</div>
@@ -325,6 +307,7 @@
             </div>
 
             <div class="contact-container">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px; text-align: center; color: var(--text-main);">Özel Tasarım Ürün Talebi Oluştur</h3>
                 <form id="contactForm" onsubmit="handleSpecialRequestSubmit(event)">
                     <div class="form-group">
                         <label for="name">Adınız Soyadınız</label>
@@ -336,9 +319,22 @@
                     </div>
                     <div class="form-group">
                         <label for="message">İstediğiniz Tasarımın Detayları (Renk, Ölçü vb.)</label>
-                        <textarea id="message" class="form-control" rows="4" required placeholder="Lütfen detayları buraya yazın..."></textarea>
+                        <textarea id="message" class="form-control" rows="3" required placeholder="Lütfen detayları buraya yazın..."></textarea>
                     </div>
-                    <button type="submit" class="submit-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp ile Talebi Gönder</button>
+                    
+                    <div class="form-group">
+                        <label>Varsa Model Dosyanız veya Resminiz (İsteğe Bağlı)</label>
+                        <div class="file-upload-wrapper">
+                            <div class="file-upload-btn-custom" id="uploadBtnArea">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <span id="uploadBtnText">Dosya Ekle (Maks 100MB)</span>
+                            </div>
+                            <input type="file" id="specialFile" onchange="handleFileSelect(this)">
+                        </div>
+                        <div class="file-name-indicator" id="fileNameIndicator"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitFormBtn"><i class="fa-brands fa-whatsapp"></i> WhatsApp ile Talebi Gönder</button>
                 </form>
             </div>
         </div>
@@ -408,59 +404,42 @@
 
         let allProducts = [];
         let cart = [];
+        let selectedFileBase64 = null;
+        let selectedFileName = "";
 
-        // MOBİL MENÜ TETİKLEYİCİLERİ
-        function toggleMenu() {
-            const nav = document.getElementById('navMenu');
-            nav.classList.toggle('active');
-        }
+        function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
+        function closeMenu() { document.getElementById('navMenu').classList.remove('active'); }
 
-        function closeMenu() {
-            const nav = document.getElementById('navMenu');
-            nav.classList.remove('active');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchProductsFromSheet();
-        });
+        document.addEventListener('DOMContentLoaded', () => { fetchProductsFromSheet(); });
 
         async function fetchProductsFromSheet() {
             const gridElement = document.getElementById('dynamicProductsGrid');
             try {
                 const response = await fetch(csvUrl);
                 if (!response.ok) throw new Error('Tablo verilerine erişilemedi.');
-                
                 const data = await response.text();
                 allProducts = parseCSV(data);
-
                 if (allProducts.length === 0) {
-                    gridElement.innerHTML = `<div class="status-message error-text">E-Tablonuzda listelenecek ürün bulunamadı. Lütfen satırları kontrol edin.</div>`;
+                    gridElement.innerHTML = `<div class="status-message error-text">E-Tablonuzda listelenecek ürün bulunamadı.</div>`;
                     return;
                 }
-
                 renderProducts(allProducts);
             } catch (error) {
                 console.error(error);
-                gridElement.innerHTML = `<div class="status-message error-text">Ürün listesi şu an yüklenemedi. Lütfen Google E-Tablo paylaşım ayarlarını kontrol edin.</div>`;
+                gridElement.innerHTML = `<div class="status-message error-text">Ürün listesi şu an yüklenemedi.</div>`;
             }
         }
 
         function parseCSV(text) {
             const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
             if (lines.length <= 1) return [];
-
             const headers = lines[0].split(',').map(h => h.replace(/^"|"$/g, '').toLowerCase().trim());
-            
             const results = [];
             for (let i = 1; i < lines.length; i++) {
                 const matches = lines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || lines[i].split(',');
                 const values = matches.map(v => v.replace(/^"|"$/g, '').trim());
-                
                 const entry = {};
-                headers.forEach((header, index) => {
-                    entry[header] = values[index] || '';
-                });
-
+                headers.forEach((header, index) => { entry[header] = values[index] || ''; });
                 if (entry.title && entry.price) {
                     entry.unique_id = 'prod_' + i;
                     results.push(entry);
@@ -472,24 +451,17 @@
         function renderProducts(products) {
             const gridElement = document.getElementById('dynamicProductsGrid');
             gridElement.innerHTML = '';
-
             const categoryNames = {
-                'anahtarlik': 'Anahtarlık',
-                'decor': 'Ev Dekorasyon',
-                'yedekparca': 'Yedek Parça',
-                'prototip': 'Prototip',
-                'ozel': 'Kişiye Özel Ürünler'
+                'anahtarlik': 'Anahtarlık', 'decor': 'Ev Dekorasyon',
+                'yedekparca': 'Yedek Parça', 'prototip': 'Prototip', 'ozel': 'Kişiye Özel Ürünler'
             };
-
             products.forEach(product => {
                 const rawCategory = (product.category || '').toLowerCase().trim();
                 const displayCategory = categoryNames[rawCategory] || '3D Tasarım';
-                
                 const card = document.createElement('div');
                 card.className = 'product-card fade';
                 card.setAttribute('data-category', rawCategory);
                 card.onclick = () => openProductDetail(product.unique_id);
-
                 card.innerHTML = `
                     <div class="product-img-box">
                         <img src="${product.img || 'https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'">
@@ -511,43 +483,26 @@
             const buttons = document.querySelectorAll('.category-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             buttonElement.classList.add('active');
-
             const cards = document.querySelectorAll('.product-card');
             cards.forEach(card => {
                 const cardCat = card.getAttribute('data-category');
-                if (category === 'all' || cardCat === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = (category === 'all' || cardCat === category) ? 'block' : 'none';
             });
         }
 
         function openProductDetail(uniqueId) {
             const product = allProducts.find(p => p.unique_id === uniqueId);
             if (!product) return;
-
             const modalContent = document.getElementById('modalDetailContent');
             const descriptionText = product.description || "Bu harika 3D tasarım ürünümüz yüksek kalitede, doğa dostu malzemelerle atölyemizde butik olarak üretilmektedir.";
             const productCode = product.id || product.unique_id.replace('prod_', '');
-
-            const categoryNames = {
-                'anahtarlik': 'Anahtarlık',
-                'decor': 'Ev Dekorasyon',
-                'yedekparca': 'Yedek Parça',
-                'prototip': 'Prototip',
-                'ozel': 'Kişiye Özel Ürünler'
-            };
-            const rawCategory = (product.category || '').toLowerCase().trim();
-            const displayCategory = categoryNames[rawCategory] || '3D Tasarım';
-
+            const categoryNames = { 'anahtarlik': 'Anahtarlık', 'decor': 'Ev Dekorasyon', 'yedekparca': 'Yedek Parça', 'prototip': 'Prototip', 'ozel': 'Kişiye Özel Ürünler' };
+            const displayCategory = categoryNames[(product.category || '').toLowerCase().trim()] || '3D Tasarım';
             let displayPrice = product.price.toString();
             if (!displayPrice.includes('TL')) { displayPrice += ' TL'; }
 
             modalContent.innerHTML = `
-                <div>
-                    <img src="${product.img || 'https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'}" class="detail-img" onerror="this.src='https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'">
-                </div>
+                <div><img src="${product.img || 'https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'}" class="detail-img" onerror="this.src='https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'"></div>
                 <div class="detail-info">
                     <div>
                         <h2 style="font-size: 20px; margin-bottom: 5px; color:var(--text-main); font-weight:700;">${product.title}</h2>
@@ -568,18 +523,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="detail-full-width-desc">
-                    <h4>Ürün Açıklaması</h4>
-                    <p>${descriptionText}</p>
-                </div>
+                <div class="detail-full-width-desc"><h4>Ürün Açıklaması</h4><p>${descriptionText}</p></div>
             `;
             toggleProductModal(true);
         }
 
         function changeDetailQty(amount) {
             const qtyInput = document.getElementById('detailQtyInput');
-            let currentQty = parseInt(qtyInput.value);
-            currentQty += amount;
+            let currentQty = parseInt(qtyInput.value) + amount;
             if (currentQty < 1) currentQty = 1;
             qtyInput.value = currentQty;
         }
@@ -587,73 +538,41 @@
         function addMultipleToCart(uniqueId) {
             const product = allProducts.find(p => p.unique_id === uniqueId);
             if (!product) return;
-
-            const qtyInput = document.getElementById('detailQtyInput');
-            const chosenQty = parseInt(qtyInput.value) || 1;
-
+            const chosenQty = parseInt(document.getElementById('detailQtyInput').value) || 1;
             const existingItem = cart.find(item => item.unique_id === uniqueId);
-            if (existingItem) {
-                existingItem.quantity += chosenQty;
-            } else {
-                cart.push({ ...product, quantity: chosenQty });
-            }
-
+            if (existingItem) { existingItem.quantity += chosenQty; } else { cart.push({ ...product, quantity: chosenQty }); }
             updateCart(); 
-            
             const addBtn = document.querySelector('.detail-info .add-to-cart-btn');
             const originalContent = addBtn.innerHTML;
             addBtn.innerHTML = `<i class="fa-solid fa-circle-check"></i> Eklendi!`;
             addBtn.style.background = '#2ec4b6'; 
-            
-            setTimeout(() => {
-                addBtn.innerHTML = originalContent;
-                addBtn.style.background = ''; 
-            }, 1200);
+            setTimeout(() => { addBtn.innerHTML = originalContent; addBtn.style.background = ''; }, 1200);
         }
 
-        function removeFromCart(uniqueId) {
-            cart = cart.filter(item => item.unique_id !== uniqueId);
-            updateCart();
-        }
+        function removeFromCart(uniqueId) { cart = cart.filter(item => item.unique_id !== uniqueId); updateCart(); }
 
         function updateCart() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             document.getElementById('cartCount').innerText = totalItems;
             const container = document.getElementById('cartItemsContainer');
-            
             if (cart.length === 0) {
                 container.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding: 40px 0;">Sepetiniz şu an boş.</p>';
                 return;
             }
-
-            let htmlContent = `
-                <div class="cart-table-header">
-                    <div>Ürün</div>
-                    <div>Fiyat</div>
-                    <div style="text-align: center;">Miktar</div>
-                    <div style="text-align: right;">Toplam</div>
-                    <div></div>
-                </div>
-                <div class="cart-item-list">
-            `;
-
+            let htmlContent = `<div class="cart-table-header"><div>Ürün</div><div>Fiyat</div><div style="text-align: center;">Miktar</div><div style="text-align: right;">Toplam</div><div></div></div><div class="cart-item-list">`;
             let subTotal = 0; 
             let whatsappMessageText = "👋 Merhaba AKÇAY DİJİTAL, web sitenizden şu ürünleri sipariş etmek istiyorum:\n\n";
 
             cart.forEach(item => {
-                const rawPrice = item.price.toString().replace('TL', '').replace('.', '').replace(',', '.').trim();
-                const cleanPrice = parseFloat(rawPrice);
+                const cleanPrice = parseFloat(item.price.toString().replace('TL', '').replace('.', '').replace(',', '.').trim());
                 let itemTotalText = "";
                 let itemPriceText = item.price.toString();
                 if (!itemPriceText.includes('TL')) { itemPriceText += ' TL'; }
-                
                 if (!isNaN(cleanPrice)) {
                     let itemTotalNum = cleanPrice * item.quantity;
                     subTotal += itemTotalNum;
                     itemTotalText = `${itemTotalNum.toLocaleString('tr-TR')} TL`;
-                } else {
-                    itemTotalText = `${item.price}`;
-                }
+                } else { itemTotalText = `${item.price}`; }
 
                 htmlContent += `
                     <div class="cart-row">
@@ -679,24 +598,9 @@
             htmlContent += `</div>`; 
             const kdvAmount = subTotal * 0.20; 
             const grandTotal = subTotal + kdvAmount; 
-
-            htmlContent += `
-                <div class="cart-summary-wrapper">
-                    <div class="cart-summary-line"><span>Toplam:</span><span>${subTotal.toLocaleString('tr-TR')} TL</span></div>
-                    <div class="cart-summary-line"><span>KDV (%20):</span><span>${kdvAmount.toLocaleString('tr-TR')} TL</span></div>
-                    <div style="width: 240px; border-top: 1px dashed var(--border-color); margin: 5px 0;"></div>
-                    <div class="cart-summary-total"><span style="font-size: 14px; font-weight:600; color:var(--text-muted);">GENEL TOPLAM:</span><span>${grandTotal.toLocaleString('tr-TR')} TL</span></div>
-                </div>
-            `;
-
+            htmlContent += `<div class="cart-summary-wrapper"><div class="cart-summary-line"><span>Toplam:</span><span>${subTotal.toLocaleString('tr-TR')} TL</span></div><div class="cart-summary-line"><span>KDV (%20):</span><span>${kdvAmount.toLocaleString('tr-TR')} TL</span></div><div style="width: 240px; border-top: 1px dashed var(--border-color); margin: 5px 0;"></div><div class="cart-summary-total"><span style="font-size: 14px; font-weight:600; color:var(--text-muted);">GENEL TOPLAM:</span><span>${grandTotal.toLocaleString('tr-TR')} TL</span></div></div>`;
             whatsappMessageText += `\n-----------------------\n💰 *Ara Toplam:* ${subTotal.toLocaleString('tr-TR')} TL\n🌾 *KDV (%20):* ${kdvAmount.toLocaleString('tr-TR')} TL\n🧮 *GENEL TOPLAM:* ${grandTotal.toLocaleString('tr-TR')} TL\n\nSiparişimi onaylamak istiyorum.`;
-            
-            htmlContent += `
-                <div class="cart-action-btn-group">
-                    <a class="continue-shopping-link" onclick="toggleCartModal(false)"><i class="fa-solid fa-chevron-left"></i> Alışverişe Devam Et</a>
-                    <a href="https://wa.me/905326180952?text=${encodeURIComponent(whatsappMessageText)}" target="_blank" class="cart-submit-red-btn">SATIN AL <i class="fa-brands fa-whatsapp" style="font-size:16px;"></i></a>
-                </div>
-            `;
+            htmlContent += `<div class="cart-action-btn-group"><a class="continue-shopping-link" onclick="toggleCartModal(false)"><i class="fa-solid fa-chevron-left"></i> Alışverişe Devam Et</a><a href="https://wa.me/905326180952?text=${encodeURIComponent(whatsappMessageText)}" target="_blank" class="cart-submit-red-btn">SATIN AL <i class="fa-brands fa-whatsapp" style="font-size:16px;"></i></a></div>`;
             container.innerHTML = htmlContent;
         }
 
@@ -707,19 +611,98 @@
             if (item.quantity < 1) { removeFromCart(uniqueId); } else { updateCart(); }
         }
 
-        function handleSpecialRequestSubmit(event) {
+        // DOSYA SEÇME VE 100MB KONTROLÜ
+        function handleFileSelect(input) {
+            const file = input.files[0];
+            const indicator = document.getElementById('fileNameIndicator');
+            const btnText = document.getElementById('uploadBtnText');
+            
+            if (!file) {
+                selectedFileBase64 = null;
+                selectedFileName = "";
+                indicator.style.display = "none";
+                btnText.innerText = "Dosya Ekle (Maks 100MB)";
+                return;
+            }
+
+            // 100 Megabayt Kontrolü (100 * 1024 * 1024 byte)
+            const maxSizeInBytes = 100 * 1024 * 1024;
+            if (file.size > maxSizeInBytes) {
+                alert("Hata: Seçtiğiniz dosya 100MB sınırını aşmaktadır. Lütfen daha küçük bir dosya yükleyin.");
+                input.value = ""; // Seçimi sıfırla
+                selectedFileBase64 = null;
+                selectedFileName = "";
+                indicator.style.display = "none";
+                btnText.innerText = "Dosya Ekle (Maks 100MB)";
+                return;
+            }
+
+            selectedFileName = file.name;
+            btnText.innerText = "Dosya Değiştir";
+            indicator.innerText = `📎 Seçilen Dosya: ${file.name} (${(file.size / (1024 * 1024)).toFixed(2)} MB)`;
+            indicator.style.display = "block";
+
+            // Dosyayı göndermeye hazır hale getirmek için Base64 formatına çeviriyoruz
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                selectedFileBase64 = e.target.result.split(',')[1];
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // ÖZEL İSTEK FORMU GÖNDERME İŞLEMİ
+        async function handleSpecialRequestSubmit(event) {
             event.preventDefault();
+            
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
-            const whatsappText = `👋 Merhaba AKÇAY DİJİTAL,\n\nBen *${name}* (${phone}). Web siteniz üzerinden özel bir 3D tasarım sipariş talebi göndermek istiyorum.\n\n🛠️ *İstediğim Model Detayları:*\n${message}`;
+            const submitBtn = document.getElementById('submitFormBtn');
+            
+            let fileLinkText = "Dosya eklenmedi.";
+            
+            // Eğer dosya seçildiyse, arka planda anonim, güvenli ve ücretsiz dosya yükleme API'sini tetikliyoruz
+            if (selectedFileBase64) {
+                const originalBtnContent = submitBtn.innerHTML;
+                submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Dosya Yükleniyor, Lütfen Bekleyin...`;
+                submitBtn.disabled = true;
+                
+                try {
+                    // Ücretsiz ve 100MB+ destekleyen anonim bir resim/dosya yükleme servisi (bunu sunucuna göre ayarlayabilirsin, geçici test için Ücretsiz Pomf/Catbox altyapısı entegre mantığı)
+                    const formData = new FormData();
+                    const fileInput = document.getElementById('specialFile');
+                    formData.append('file', fileInput.files[0]);
+                    
+                    // Güvenli ve ücretsiz geçici dosya barındırma servisi (Maks 512MB)
+                    const uploadResponse = await fetch('https://tmpfiles.org/api/v1/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (uploadResponse.ok) {
+                        const uploadResult = await uploadResponse.json();
+                        // tmpfiles.org indirme URL yapısını doğrudan linke çeviriyoruz
+                        const rawUrl = uploadResult.data.url;
+                        fileLinkText = rawUrl.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+                    } else {
+                        fileLinkText = "[Dosya sunucuya yüklenirken bir hata oluştu, lütfen WhatsApp üzerinden manuel iletin]";
+                    }
+                } catch (error) {
+                    console.error("Yükleme hatası:", error);
+                    fileLinkText = "[Dosya yükleme bağlantı hatası, lütfen WhatsApp üzerinden manuel iletin]";
+                }
+                
+                submitBtn.innerHTML = originalBtnContent;
+                submitBtn.disabled = false;
+            }
+
+            const whatsappText = `👋 Merhaba AKÇAY DİJİTAL,\n\nBen *${name}* (${phone}). Web siteniz üzerinden yeni bir özel 3D tasarım talebi oluşturdum.\n\n🛠️ *İstediğim Model Detayları:*\n${message}\n\n📎 *Eklenen Dosya / Model Linki:*\n${fileLinkText}\n\nİnceleyip dönüş yapabilir misiniz?`;
             window.open(`https://wa.me/905326180952?text=${encodeURIComponent(whatsappText)}`, '_blank');
         }
 
         function toggleProductModal(show) { document.getElementById('productModal').style.display = show ? 'flex' : 'none'; }
         function toggleCartModal(show) { document.getElementById('cartModal').style.display = show ? 'flex' : 'none'; }
 
-        // Menünün dışına veya modalların arkasına tıklayınca kapatma kontrolleri
         window.onclick = function(event) {
             const productModal = document.getElementById('productModal');
             const cartModal = document.getElementById('cartModal');
@@ -728,8 +711,6 @@
             
             if (event.target == productModal) toggleProductModal(false);
             if (event.target == cartModal) toggleCartModal(false);
-            
-            // Mobilde menü açıkken dışarı tıklanırsa kapatma algılayıcısı
             if (navMenu.classList.contains('active') && !navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
                 closeMenu();
             }
