@@ -670,7 +670,7 @@
             });
         }
 
-        // YENİ DETAY PENCERESİ FONKSİYONU
+        // 1. GÜNCEL ÜRÜN DETAY FONKSİYONU (SEPETE GİT BUTONU EKLENDİ)
         function openProductDetail(uniqueId) {
             const product = allProducts.find(p => p.unique_id === uniqueId);
             if (!product) return;
@@ -678,10 +678,8 @@
             const modalContent = document.getElementById('modalDetailContent');
             const descriptionText = product.description || "Bu harika 3D tasarım ürünümüz yüksek kalitede, doğa dostu malzemelerle atölyemizde butik olarak üretilmektedir. Detaylı bilgi ve özel ölçü talepleriniz için sepetinize ekleyerek bizimle iletişime geçebilirsiniz.";
             
-            // E-tablodaki id sütununu (Ürün Kodu) al, yoksa unique_id kullan
             const productCode = product.id || product.unique_id.replace('prod_', '');
 
-            // Kategori eşleştirme
             const categoryNames = {
                 'anahtarlik': 'Anahtarlık',
                 'decor': 'Ev Dekorasyon',
@@ -691,6 +689,12 @@
             };
             const rawCategory = (product.category || '').toLowerCase().trim();
             const displayCategory = categoryNames[rawCategory] || '3D Tasarım';
+
+            // E-tablodaki fiyata bakıp sonunda TL yoksa ekleyelim
+            let displayPrice = product.price.toString();
+            if (!displayPrice.includes('TL')) {
+                displayPrice += ' TL';
+            }
 
             modalContent.innerHTML = `
                 <div>
@@ -709,7 +713,7 @@
                     </div>
                     
                     <div>
-                        <div style="font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--accent-pastel);">${product.price}</div>
+                        <div style="font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--accent-pastel);">${displayPrice}</div>
                         
                         <div style="font-size: 12px; font-weight: 600; margin-bottom: 5px;">Adet:</div>
                         <div class="qty-selector">
@@ -718,9 +722,14 @@
                             <button class="qty-btn" onclick="changeDetailQty(1)">+</button>
                         </div>
 
-                        <button class="add-to-cart-btn" onclick="addMultipleToCart('${product.unique_id}')">
-                            <i class="fa-solid fa-cart-plus"></i> Sepete Ekle
-                        </button>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="add-to-cart-btn" onclick="addMultipleToCart('${product.unique_id}')" style="flex: 2;">
+                                <i class="fa-solid fa-cart-plus"></i> Sepete Ekle
+                            </button>
+                            <button class="add-to-cart-btn" onclick="toggleProductModal(false); toggleCartModal(true);" style="flex: 1.2; background: var(--accent-pastel);">
+                                <i class="fa-solid fa-basket-shopping"></i> Sepete Git
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
@@ -783,9 +792,8 @@
             updateCart();
         }
 
-        // SEPETİ GÖRSELDEKİ FORMATTA YENİDEN OLUŞTURAN FONKSİYON
+        // 2. GÜNCEL SEPET FONKSİYONU (%20 KDV OTM. HESAPLAMA, TL BİRİMİ VE GENEL TOPLAM)
         function updateCart() {
-            // Header'daki sepet ikon sayaç güncellemesi
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             document.getElementById('cartCount').innerText = totalItems;
 
@@ -796,7 +804,6 @@
                 return;
             }
 
-            // Tablo Başlıkları
             let htmlContent = `
                 <div class="cart-table-header">
                     <div>Ürün</div>
@@ -808,25 +815,27 @@
                 <div class="cart-item-list">
             `;
 
-            let grandTotal = 0;
-            let hasCalculatedTotal = true;
+            let subTotal = 0; // KDV hariç saf ürün toplamları
+
             let whatsappMessageText = "👋 Merhaba AKÇAY DIGITAL, web sitenizden şu ürünleri sipariş etmek istiyorum:\n\n";
 
-            // Sepetteki ürünleri satır satır dönüyoruz
             cart.forEach(item => {
-                // E-tablodaki fiyat verisini sayıya çevirme işlemi
+                // Fiyat verisini temizleyip sayıya çeviriyoruz
                 const rawPrice = item.price.toString().replace('TL', '').replace('.', '').replace(',', '.').trim();
                 const cleanPrice = parseFloat(rawPrice);
                 
                 let itemTotalNum = 0;
                 let itemTotalText = "";
+                let itemPriceText = item.price.toString();
+
+                // Ürün fiyatında TL yoksa ekleyelim
+                if (!itemPriceText.includes('TL')) { itemPriceText += ' TL'; }
                 
                 if (!isNaN(cleanPrice)) {
                     itemTotalNum = cleanPrice * item.quantity;
-                    grandTotal += itemTotalNum;
+                    subTotal += itemTotalNum;
                     itemTotalText = `${itemTotalNum.toLocaleString('tr-TR')} TL`;
                 } else {
-                    hasCalculatedTotal = false;
                     itemTotalText = `${item.price}`;
                 }
 
@@ -836,9 +845,7 @@
                             <img src="${item.img || 'https://via.placeholder.com/60x60'}" class="cart-product-img" onerror="this.src='https://via.placeholder.com/60x60'">
                             <span class="cart-product-title">${item.title}</span>
                         </div>
-                        
-                        <div class="cart-cell price">${item.price}</div>
-                        
+                        <div class="cart-cell price">${itemPriceText}</div>
                         <div class="cart-cell" style="display: flex; justify-content: center;">
                             <div class="cart-qty-control">
                                 <button class="cart-qty-btn" onclick="updateCartItemQty('${item.unique_id}', -1)">-</button>
@@ -846,9 +853,7 @@
                                 <button class="cart-qty-btn" onclick="updateCartItemQty('${item.unique_id}', 1)">+</button>
                             </div>
                         </div>
-                        
                         <div class="cart-cell total" style="text-align: right;">${itemTotalText}</div>
-                        
                         <div class="cart-row-remove" onclick="removeFromCart('${item.unique_id}')">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
@@ -858,28 +863,38 @@
                 whatsappMessageText += `📦 *${item.title}* - ${item.quantity} Adet (${itemTotalText})\n`;
             });
 
-            htmlContent += `</div>`; // Liste bitişi
+            htmlContent += `</div>`; // Liste bitti
 
-            // Alt Kısım: Görseldeki gibi Toplam, KDV ve Satın Al Butonları
+            // OTOMATİK MUHASEBE HESAPLAMALARI
+            const kdvAmount = subTotal * 0.20; // %20 KDV hesaplama
+            const grandTotal = subTotal + kdvAmount; // Genel Toplam (Ürünler + KDV)
+
+            // Fatura Özeti Alanı (Görsel formatına uyarlandı)
             htmlContent += `
                 <div class="cart-summary-wrapper">
                     <div class="cart-summary-line">
                         <span>Toplam:</span>
-                        <span>${grandTotal.toLocaleString('tr-TR')} TL</span>
+                        <span>${subTotal.toLocaleString('tr-TR')} TL</span>
                     </div>
                     <div class="cart-summary-line">
-                        <span>KDV:</span>
-                        <span>Dahil</span>
+                        <span>KDV (%20):</span>
+                        <span>${kdvAmount.toLocaleString('tr-TR')} TL</span>
                     </div>
+                    <div style="width: 240px; border-top: 1px dashed var(--border-color); margin: 5px 0;"></div>
                     <div class="cart-summary-total">
+                        <span style="font-size: 14px; font-weight:600; color:var(--text-muted); display:flex; align-items:center;">GENEL TOPLAM:</span>
                         <span>${grandTotal.toLocaleString('tr-TR')} TL</span>
                     </div>
                 </div>
             `;
 
-            // WhatsApp mesaj tamamlama linki
-            whatsappMessageText += `\n💵 *Genel Toplam (KDV Dahil):* ${grandTotal.toLocaleString('tr-TR')} TL\n`;
-            whatsappMessageText += `\nSiparişimi onaylamak ve adres/kargo detaylarını görüşmek istiyorum.`;
+            // WhatsApp Sipariş Metni Güncellemesi
+            whatsappMessageText += `\n-----------------------\n`;
+            whatsappMessageText += `💰 *Ara Toplam:* ${subTotal.toLocaleString('tr-TR')} TL\n`;
+            whatsappMessageText += `🌾 *KDV (%20):* ${kdvAmount.toLocaleString('tr-TR')} TL\n`;
+            whatsappMessageText += `🧮 *GENEL TOPLAM:* ${grandTotal.toLocaleString('tr-TR')} TL\n`;
+            whatsappMessageText += `\nSiparişimi onaylamak ve kargo/adres detaylarını görüşmek istiyorum.`;
+            
             const encodedMessage = encodeURIComponent(whatsappMessageText);
 
             htmlContent += `
