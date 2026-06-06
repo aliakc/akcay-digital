@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKÇAY DIGITAL | Minimalist 3D Tasarım Atölyesi</title>
+    <title>AKÇAY DİJİTAL | Minimalist 3D Tasarım Atölyesi</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -40,114 +40,40 @@
         .cart-icon-container:hover i { color: var(--accent-pastel); }
         .cart-count { position: absolute; top: -10px; right: -10px; background: var(--accent-pastel); color: white; font-size: 11px; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-        /* HERO ALANI GRAFİKSEL DÜZENLEMELERİ */
-        .hero-section {
-            text-align: center; 
-            padding: 120px 20px 80px 20px; /* Üst menünün altında kalmaması için padding ayarlandı */
-            background-color: #f3ede0;
+        /* HERO BÖLÜMÜ (Yükseklik Artırıldı ve Ortalandı) */
+        .hero {
+            height: 78vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 20px; background-color: #f3ede0;
             background-image: 
                 linear-gradient(rgba(216, 140, 117, 0.22) 1.5px, transparent 1.5px),
                 linear-gradient(90deg, rgba(216, 140, 117, 0.22) 1.5px, transparent 1.5px);
-            background-size: 45px 45px; 
+            background-size: 45px 45px; position: relative; overflow: hidden;
+            animation: patternMove 14s linear infinite; margin-top: 65px;
+        }
+        @keyframes patternMove { 0% { background-position: 0 0; } 100% { background-position: 45px 45px; } }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(252,250,246,0.2) 0%, rgba(252,250,246,0.85) 80%); z-index: 1; }
+        
+        .hero-content { 
             position: relative; 
-            overflow: hidden;
-            animation: patternMove 14s linear infinite; 
-            margin-top: 65px;
+            z-index: 2; 
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        @keyframes patternMove { 0% { background-position: 0 0; } 100% { background-position: 45px 45px; } }
-        .hero-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(252,250,246,0.2) 0%, rgba(252,250,246,0.85) 80%); z-index: 1; }
+        .hero h1 { font-size: 40px; font-weight: 700; margin-bottom: 15px; color: var(--text-main); line-height: 1.2; text-align: center; }
+        .hero h1 span { color: var(--accent-pastel); }
+        .hero p { font-size: 15px; color: var(--text-main); max-width: 650px; margin: 0 auto 30px auto; line-height: 1.6; text-align: center; }
         
-        .hero-title {
-            font-size: 42px;
-            font-weight: 800;
-            color: var(--text-main);
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* İSTEDİĞİN ÖZEL ÇİZGİ: Ortada yoğun, kenarlara doğru silinen ve alt gölgeli şerit efekti */
-        .hero-divider {
-            width: 60%;
-            max-width: 500px;
-            height: 1px;
-            margin: 15px auto 25px auto;
-            background: linear-gradient(to right, rgba(43,45,66,0) 0%, rgba(43,45,66,0.8) 50%, rgba(43,45,66,0) 100%);
-            box-shadow: 0 4px 8px rgba(43, 45, 66, 0.15);
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-subtitle {
-            font-size: 16px;
-            color: var(--text-main);
-            max-width: 650px;
-            line-height: 1.6;
-            margin: 0 auto 35px auto;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* BUTON GRUBU VE MERKEZİ EŞİTLEME */
-        .hero-buttons-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            width: 100%;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Ortak Buton Tasarımı (Tam Merkezleme ve Eşit Boyutlar) */
-        .hero-btn {
-            width: 220px; 
-            height: 50px; 
-            display: inline-flex;
-            align-items: center;
-            justify-content: center; 
-            text-align: center;
-            border-radius: 30px; /* Konseptin oval hatlarına uyum sağlaması için ideal yuvarlaklık */
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-            border: none;
-        }
-
-        /* 1. Buton: Koleksiyonu Keşfet */
-        .primary-btn {
-            background: var(--text-main);
-            color: #ffffff;
-        }
-        .primary-btn:hover {
-            background: var(--accent-pastel);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* 2. Buton: Özel İstek Talebi (Kırmızı Farklı Renk ve Tarz) */
-        .secondary-btn {
-            background: #e63946; 
-            color: #ffffff;
-        }
-        .secondary-btn:hover {
-            background: #c92a36;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.25);
-        }
+        .btn-group { display: flex; gap: 15px; justify-content: center; align-items: center; width: 100%; }
+        .btn, .btn-secondary { display: inline-block; padding: 12px 26px; border-radius: 30px; font-weight: 600; font-size: 13px; text-decoration: none; transition: 0.3s; }
+        .btn { background: var(--text-main); color: #fff; }
+        .btn:hover { background: var(--accent-pastel); }
+        .btn-secondary { border: 2px solid var(--text-main); color: var(--text-main); }
+        .btn-secondary:hover { background: var(--text-main); color: #fff; }
 
         /* BÖLÜMLER */
         section { padding: 60px 8%; }
@@ -176,7 +102,7 @@
         .product-price { font-size: 15px; font-weight: 700; color: var(--text-main); }
         .view-detail-text { font-size: 11px; color: var(--accent-pastel); font-weight: 500; }
 
-        /* MODAL ARKA PLAN (Daha Derin Karartı ve Sabit Genişlik) */
+        /* MODAL ARKA PLAN */
         .modal-overlay { 
             position: fixed; 
             top: 0; left: 0; 
@@ -190,7 +116,7 @@
             cursor: pointer; 
         }
         
-        /* HEM DETAY HEM SEPET İÇİR TEK VE SABİT ÖLÇÜ */
+        /* SABİT GENİŞLİKTEKİ MODAL KUTUSU */
         .modal-box { 
             background: #ffffff !important; 
             color: #2b2d42 !important; 
@@ -209,7 +135,6 @@
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); 
         }
 
-        /* Detay içindeki iki kolonlu düzenin taşmasını önleme ayarı */
         #modalDetailContent {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -221,14 +146,6 @@
         }
         .modal-close { position: absolute; top: 15px; right: 15px; font-size: 22px; cursor: pointer; color: var(--text-muted); transition: 0.3s; }
         .modal-close:hover { color: var(--text-main); }
-        
-        /* YENİ DETAY SAYFASI DÜZENİ (CSS) */
-        .detail-container { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 20px; 
-        }
-        @media (max-width: 576px) { .detail-container { grid-template-columns: 1fr; } }
         
         .detail-img { 
             width: 100%; 
@@ -263,7 +180,7 @@
             line-height: 1.6;
         }
 
-        /* Adet Seçici Tasarımı */
+        /* Adet Seçici */
         .qty-selector {
             display: flex;
             align-items: center;
@@ -296,12 +213,7 @@
         .add-to-cart-btn { background: var(--text-main); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 13px; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s; }
         .add-to-cart-btn:hover { background: var(--accent-pastel); }
         
-        /* SEPET DETAYLARI */
-        #cartModal .modal-box {
-            max-width: 850px; 
-            width: 95%;
-        }
-        
+        /* SEPET TASARIMI */
         .cart-table-header {
             display: grid;
             grid-template-columns: 3fr 1fr 1.2fr 1fr 0.4fr;
@@ -508,13 +420,13 @@
 
         /* MOBİL UYUMLULUK */
         @media (max-width: 992px) { .special-container, .about-container { grid-template-columns: 1fr; flex-direction: column; gap: 30px; } .about-visual { height: 220px; } }
-        @media (max-width: 768px) { header { padding: 15px 5%; } nav a { margin-left: 12px; font-size: 12px; } .hero-title { font-size: 32px; } section { padding: 40px 5%; } .category-bar-container { top: 55px; } .hero-btn { width: 100%; max-width: 280px; } }
+        @media (max-width: 768px) { header { padding: 15px 5%; } nav a { margin-left: 12px; font-size: 12px; } .hero h1 { font-size: 26px; } section { padding: 40px 5%; } .category-bar-container { top: 55px; } }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">AKÇAY <span>DIGITAL</span></a>
+        <a href="#" class="logo">AKÇAY <span>DİJİTAL</span></a>
         <nav>
             <a href="#">Ana Sayfa</a>
             <a href="#products">Ürünler</a>
@@ -528,16 +440,14 @@
         </nav>
     </header>
 
-    <section class="hero-section">
-        <h1 class="hero-title">AKÇAY DİJİTAL</h1>
-        
-        <div class="hero-divider"></div>
-        
-        <p class="hero-subtitle">High-precision 3D printing solutions bringing your imagination to life with premium quality.</p>
-        
-        <div class="hero-buttons-group">
-            <a href="#products" class="hero-btn primary-btn">Koleksiyonu Keşfet</a>
-            <button class="hero-btn secondary-btn" onclick="document.getElementById('special-request').scrollIntoView({behavior: 'smooth'});">Özel İstek Talebi</button>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Fikirlerinizi <span>Katman Katman</span> Sanata Dönüştürün</h1>
+            <p>AKÇAY DİJİTAL olarak yüksek hassasiyetli 3D baskı teknolojisini modern tasarımlarla buluşturuyoruz. Eviniz için estetik vazolar, kişisel figürler ve tamamen size özel üretimler.</p>
+            <div class="btn-group">
+                <a href="#products" class="btn">Koleksiyonu Keşfet</a>
+                <a href="#special-request" class="btn-secondary">Özel İstek</a>
+            </div>
         </div>
     </section>
 
@@ -606,7 +516,7 @@
             <div class="about-text">
                 <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Biz <span>Kimiz?</span></h2>
                 <h3>Geleceğin Üretim Teknolojisi, Bugünün Estetiği</h3>
-                <p>AKÇAY DIGITAL, geleneksel dekorasyon anlayışını kırarak yaşam alanlarınıza yenilikçi dokunuşlar sunmak amacıyla kurulmuş bir 3D baskı ve tasarım atölyesidir.</p>
+                <p>AKÇAY DİJİTAL, geleneksel dekorasyon anlayışını kırarak yaşam alanlarınıza yenilikçi dokunuşlar sunmak amacıyla kurulmuş bir 3D baskı ve tasarım atölyesidir.</p>
                 <p>Butik üretim felsefemizle, endüstriyel kalitedeki yazıcılarımızda doğa dostu malzemeler kullanarak pürüzsüz yüzeyler sunuyoruz.</p>
                 <div class="about-stats">
                     <div class="stat-box"><h4>7/24</h4><p>Aktif Üretim</p></div>
@@ -649,18 +559,17 @@
         <div class="modal-box">
             <span class="modal-close" onclick="toggleCartModal(false)">&times;</span>
             <h3 style="font-size: 22px; font-weight: 600; color: var(--text-main);">Sepetim</h3>
-            <div style="font-size: 12px; color: var(--text-muted); margin-top: -15px; margin-bottom: 10px;">Mağaza: AKÇAY DIGITAL</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: -15px; margin-bottom: 10px;">Mağaza: AKÇAY DİJİTAL</div>
             
             <div id="cartItemsContainer"></div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 AKÇAY DIGITAL. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2026 AKÇAY DİJİTAL. Tüm Hakları Saklıdır.</p>
     </footer>
 
     <script>
-        // Google E-Tablo Bağlantı Ayarları
         const SHEET_ID = '16Bv3BU5QmH8o8pR9tqsmjUNU8hcFAy8oNDzamLHcy1w'; 
         const SHEET_TITLE = 'Sheet1'; 
         const csvUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_TITLE)}`;
@@ -740,7 +649,7 @@
 
                 card.innerHTML = `
                     <div class="product-img-box">
-                        <img src="${product.img || 'https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIGITAL'}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIGITAL'">
+                        <img src="${product.img || 'https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'">
                     </div>
                     <div class="product-info">
                         <div class="product-category">${displayCategory}</div>
@@ -797,7 +706,7 @@
 
             modalContent.innerHTML = `
                 <div>
-                    <img src="${product.img || 'https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIGITAL'}" class="detail-img" onerror="this.src='https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIGITAL'">
+                    <img src="${product.img || 'https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'}" class="detail-img" onerror="this.src='https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'">
                 </div>
                 
                 <div class="detail-info">
@@ -840,6 +749,13 @@
             toggleProductModal(true);
         }
 
+        document.getElementById('productModal').addEventListener('click', function(e) {
+            if(e.target === this) toggleProductModal(false);
+        });
+        document.getElementById('cartModal').addEventListener('click', function(e) {
+            if(e.target === this) toggleCartModal(false);
+        });
+
         function changeDetailQty(amount) {
             const qtyInput = document.getElementById('detailQtyInput');
             let currentQty = parseInt(qtyInput.value);
@@ -880,7 +796,6 @@
             updateCart();
         }
 
-        // SEPET GÜNCELLEME VE OTOMATİK KDV HESAPLAMA
         function updateCart() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             document.getElementById('cartCount').innerText = totalItems;
@@ -904,7 +819,7 @@
             `;
 
             let subTotal = 0; 
-            let whatsappMessageText = "👋 Merhaba AKÇAY DIGITAL, web sitenizden şu ürünleri sipariş etmek istiyorum:\n\n";
+            let whatsappMessageText = "👋 Merhaba AKÇAY DİJİTAL, web sitenizden şu ürünleri sipariş etmek istiyorum:\n\n";
 
             cart.forEach(item => {
                 const rawPrice = item.price.toString().replace('TL', '').replace('.', '').replace(',', '.').trim();
@@ -1009,7 +924,7 @@
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
 
-            const whatsappText = `👋 Merhaba AKÇAY DIGITAL,\n\nBen *${name}* (${phone}). Web siteniz üzerinden özel bir 3D tasarım sipariş talebi göndermek istiyorum.\n\n🛠️ *İstediğim Model Detayları:*\n${message}\n\nMevcut modelin basılabilirliğini inceleyip fiyatlandırma konusunda bana dönüş yapabilir misiniz?`;
+            const whatsappText = `👋 Merhaba AKÇAY DİJİTAL,\n\nBen *${name}* (${phone}). Web siteniz üzerinden özel bir 3D tasarım sipariş talebi göndermek istiyorum.\n\n🛠️ *İstediğim Model Detayları:*\n${message}\n\nMevcut modelin basılabilirliğini inceleyip fiyatlandırma konusunda bana dönüş yapabilir misiniz?`;
             
             window.open(`https://wa.me/905326180952?text=${encodeURIComponent(whatsappText)}`, '_blank');
         }
@@ -1025,13 +940,8 @@
         window.onclick = function(event) {
             const productModal = document.getElementById('productModal');
             const cartModal = document.getElementById('cartModal');
-            
-            if (event.target == productModal) {
-                toggleProductModal(false);
-            }
-            if (event.target == cartModal) {
-                toggleCartModal(false);
-            }
+            if (event.target == productModal) toggleProductModal(false);
+            if (event.target == cartModal) toggleCartModal(false);
         }
     </script>
 </body>
