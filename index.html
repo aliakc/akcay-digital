@@ -31,15 +31,22 @@
             border-bottom: 1px solid var(--border-color);
             box-shadow: 0 2px 10px rgba(43, 45, 66, 0.05);
         }
-        /* Logo 1 punto büyütüldü (22px -> 24px) */
-        .logo { font-size: 24px; font-weight: 700; color: var(--text-main); text-decoration: none; letter-spacing: 1px; }
+        .logo { font-size: 24px; font-weight: 700; color: var(--text-main); text-decoration: none; letter-spacing: 1px; flex-shrink: 0; }
         .logo span { color: var(--accent-pastel); font-weight: 400; }
+        
+        /* Menü Grubu Ek Alanı */
+        .nav-container { display: flex; align-items: center; }
+        
+        /* Menü Linkleri (1.5 Kat Büyütüldü: 14px -> 21px) */
         nav { display: flex; align-items: center; }
-        nav a { color: var(--text-main); text-decoration: none; font-weight: 500; margin-left: 25px; font-size: 14px; transition: 0.3s; }
+        nav a { color: var(--text-main); text-decoration: none; font-weight: 500; margin-left: 30px; font-size: 21px; transition: 0.3s; }
         nav a:hover { color: var(--accent-pastel); }
         
-        .cart-icon-container { position: relative; margin-left: 25px; cursor: pointer; }
-        .cart-icon-container i { font-size: 20px; color: var(--text-main); transition: 0.3s; }
+        /* Mobil Menü Açma Çizgileri (Hamburger İkonu) - Masaüstünde Gizli */
+        .menu-toggle { display: none; font-size: 26px; color: var(--text-main); cursor: pointer; margin-left: 20px; }
+        
+        .cart-icon-container { position: relative; margin-left: 30px; cursor: pointer; }
+        .cart-icon-container i { font-size: 24px; color: var(--text-main); transition: 0.3s; }
         .cart-icon-container:hover i { color: var(--accent-pastel); }
         .cart-count { position: absolute; top: -10px; right: -10px; background: var(--accent-pastel); color: white; font-size: 11px; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
@@ -64,90 +71,32 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            max-width: 1200px; /* Genişlik tek satır düzeni için artırıldı */
+            max-width: 1200px;
             margin: 0 auto;
         }
-        
-        /* Tek satır kalması için white-space ayarı yapıldı */
-        .hero h1 { 
-            font-size: 38px; 
-            font-weight: 700; 
-            margin-bottom: 25px; 
-            color: var(--text-main); 
-            line-height: 1.2; 
-            text-align: center;
-            white-space: nowrap; 
-        }
+        .hero h1 { font-size: 38px; font-weight: 700; margin-bottom: 25px; color: var(--text-main); line-height: 1.2; text-align: center; white-space: nowrap; }
         .hero h1 span { color: var(--accent-pastel); }
+        .hero p { font-size: 15px; color: var(--text-main); margin-bottom: 8px; line-height: 1.6; text-align: center; white-space: nowrap; }
+        .hero p.last-line { margin-bottom: 35px; }
         
-        /* Alt alta tek satırlar için paragraf yapısı güncellendi */
-        .hero p { 
-            font-size: 15px; 
-            color: var(--text-main); 
-            margin-bottom: 8px; 
-            line-height: 1.6; 
-            text-align: center; 
-            white-space: nowrap;
-        }
-        .hero p.last-line {
-            margin-bottom: 35px;
-        }
-        
-        /* BUTON GRUBU VE EŞİTLEME */
-        .btn-group { 
-            display: flex; 
-            gap: 20px; 
-            justify-content: center; 
-            align-items: center; 
-            width: 100%; 
-        }
-        
-        /* Butonların eşit boyutta ve tam merkezli olması için ortak sınıflar */
-        .hero-btn {
-            width: 210px;
-            height: 48px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 13px;
-            text-decoration: none;
-            transition: 0.3s;
-            box-sizing: border-box;
-        }
-        
-        /* Koleksiyonu Keşfet Butonu */
-        .btn-primary { 
-            background: var(--text-main); 
-            color: #fff; 
-        }
-        .btn-primary:hover { 
-            background: var(--accent-pastel); 
-            transform: translateY(-2px);
-        }
-        
-        /* Farklı Renkteki Özel İstek Butonu (Kırmızı Tonu) */
-        .btn-red { 
-            background: #e63946; 
-            color: #fff;
-        }
-        .btn-red:hover { 
-            background: #c92a36; 
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.2);
-        }
+        .btn-group { display: flex; gap: 20px; justify-content: center; align-items: center; width: 100%; }
+        .hero-btn { width: 210px; height: 48px; display: inline-flex; align-items: center; justify-content: center; text-align: center; border-radius: 30px; font-weight: 600; font-size: 13px; text-decoration: none; transition: 0.3s; box-sizing: border-box; }
+        .btn-primary { background: var(--text-main); color: #fff; }
+        .btn-primary:hover { background: var(--accent-pastel); transform: translateY(-2px); }
+        .btn-red { background: #e63946; color: #fff; }
+        .btn-red:hover { background: #c92a36; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(230, 57, 70, 0.2); }
 
         /* BÖLÜMLER */
         section { padding: 60px 8%; }
-        .section-title { text-align: center; font-size: 26px; margin-bottom: 15px; font-weight: 700; color: var(--text-main); }
+        /* Koleksiyon Kataloğu Başlığı 1.5 Kat Büyütüldü (26px -> 39px) */
+        .section-title { text-align: center; font-size: 39px; margin-bottom: 15px; font-weight: 700; color: var(--text-main); }
         .section-title span { color: var(--accent-pastel); font-weight: 400; }
 
         /* KATEGORİ BARU */
         .category-bar-container { display: flex; justify-content: center; margin-bottom: 30px; position: sticky; top: 68px; background: rgba(252, 250, 246, 0.95); padding: 12px 0; z-index: 900; border-bottom: 1px solid var(--border-color); }
         .category-buttons { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-        .category-btn { background: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-color); padding: 8px 18px; border-radius: 30px; font-size: 13px; font-weight: 500; cursor: pointer; transition: 0.3s; }
+        /* Kategori Başlıkları 2 Punto Büyütüldü (13px -> 15px) */
+        .category-btn { background: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-color); padding: 9px 22px; border-radius: 30px; font-size: 15px; font-weight: 500; cursor: pointer; transition: 0.3s; }
         .category-btn:hover, .category-btn.active { background: var(--accent-pastel); color: white; border-color: var(--accent-pastel); }
 
         /* ÜRÜN GRID SİSTEMİ */
@@ -166,277 +115,47 @@
         .product-price { font-size: 15px; font-weight: 700; color: var(--text-main); }
         .view-detail-text { font-size: 11px; color: var(--accent-pastel); font-weight: 500; }
 
-        /* MODAL ARKA PLAN */
-        .modal-overlay { 
-            position: fixed; 
-            top: 0; left: 0; 
-            width: 100%; height: 100%; 
-            background: rgba(25, 26, 38, 0.75); 
-            backdrop-filter: blur(5px); 
-            display: none; 
-            justify-content: center; 
-            align-items: center; 
-            z-index: 2000; 
-            cursor: pointer; 
-        }
-        
-        /* SABİT GENİŞLİKTEKİ MODAL KUTUSU */
-        .modal-box { 
-            background: #ffffff !important; 
-            color: #2b2d42 !important; 
-            border-radius: 16px; 
-            padding: 30px; 
-            position: relative; 
-            width: 95%;
-            max-width: 850px; 
-            min-height: 450px; 
-            max-height: 90vh; 
-            overflow-y: auto; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 20px; 
-            cursor: default; 
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); 
-        }
-
-        #modalDetailContent {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            width: 100%;
-        }
-        @media (max-width: 768px) { 
-            #modalDetailContent { grid-template-columns: 1fr; } 
-            .hero h1, .hero p { white-space: normal; } /* Mobilde taşma yapmaması için esnetme */
-        }
+        /* MODALLAR */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(25, 26, 38, 0.75); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 2000; cursor: pointer; }
+        .modal-box { background: #ffffff !important; color: #2b2d42 !important; border-radius: 16px; padding: 30px; position: relative; width: 95%; max-width: 850px; min-height: 450px; max-height: 90vh; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; cursor: default; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); }
+        #modalDetailContent { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; width: 100%; }
         .modal-close { position: absolute; top: 15px; right: 15px; font-size: 22px; cursor: pointer; color: var(--text-muted); transition: 0.3s; }
         .modal-close:hover { color: var(--text-main); }
-        
-        .detail-img { 
-            width: 100%; 
-            height: 300px; 
-            object-fit: cover; 
-            border-radius: 8px; 
-            border: 1px solid var(--border-color); 
-        }
-        
-        .detail-info { 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            height: 300px; 
-        }
-        
-        .detail-full-width-desc {
-            grid-column: 1 / -1; 
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-            margin-top: 5px;
-        }
-        .detail-full-width-desc h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
-        .detail-full-width-desc p {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
+        .detail-img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border-color); }
+        .detail-info { display: flex; flex-direction: column; justify-content: space-between; height: 300px; }
+        .detail-full-width-desc { grid-column: 1 / -1; border-top: 1px solid var(--border-color); padding-top: 15px; margin-top: 5px; }
+        .detail-full-width-desc h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text-main); }
+        .detail-full-width-desc p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
         /* Adet Seçici */
-        .qty-selector {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .qty-btn {
-            background: var(--accent-light);
-            border: 1px solid var(--border-color);
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-        }
+        .qty-selector { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .qty-btn { background: var(--accent-light); border: 1px solid var(--border-color); width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-weight: 600; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .qty-btn:hover { background: var(--accent-pastel); color: white; }
-        .qty-input {
-            width: 45px;
-            height: 32px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-weight: 600;
-            background: var(--bg-color);
-        }
+        .qty-input { width: 45px; height: 32px; text-align: center; border: 1px solid var(--border-color); border-radius: 6px; font-weight: 600; background: var(--bg-color); }
         .add-to-cart-btn { background: var(--text-main); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 13px; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s; }
         .add-to-cart-btn:hover { background: var(--accent-pastel); }
         
         /* SEPET TASARIMI */
-        .cart-table-header {
-            display: grid;
-            grid-template-columns: 3fr 1fr 1.2fr 1fr 0.4fr;
-            border-bottom: 2px solid var(--text-main);
-            padding-bottom: 10px;
-            margin-top: 15px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-main);
-            text-transform: uppercase;
-        }
-
-        .cart-item-list {
-            max-height: 40vh;
-            overflow-y: auto;
-        }
-
-        .cart-row {
-            display: grid;
-            grid-template-columns: 3fr 1fr 1.2fr 1fr 0.4fr;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .cart-product-cell {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .cart-product-img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-        }
-
-        .cart-product-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .cart-cell {
-            font-size: 14px;
-            color: var(--text-main);
-        }
-        
-        .cart-cell.price, .cart-cell.total {
-            font-weight: 500;
-        }
-
-        .cart-qty-control {
-            display: flex;
-            align-items: center;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            width: fit-content;
-            overflow: hidden;
-            background: #fff;
-        }
-
-        .cart-qty-btn {
-            background: var(--bg-color);
-            border: none;
-            width: 28px;
-            height: 28px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-            transition: 0.2s;
-        }
+        .cart-table-header { display: grid; grid-template-columns: 3fr 1fr 1.2fr 1fr 0.4fr; border-bottom: 2px solid var(--text-main); padding-bottom: 10px; margin-top: 15px; font-size: 12px; font-weight: 700; color: var(--text-main); text-transform: uppercase; }
+        .cart-item-list { max-height: 40vh; overflow-y: auto; }
+        .cart-row { display: grid; grid-template-columns: 3fr 1fr 1.2fr 1fr 0.4fr; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+        .cart-product-cell { display: flex; align-items: center; gap: 15px; }
+        .cart-product-img { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border-color); }
+        .cart-product-title { font-size: 13px; font-weight: 600; color: var(--text-main); }
+        .cart-cell { font-size: 14px; color: var(--text-main); }
+        .cart-cell.price, .cart-cell.total { font-weight: 500; }
+        .cart-qty-control { display: flex; align-items: center; border: 1px solid var(--border-color); border-radius: 4px; width: fit-content; overflow: hidden; background: #fff; }
+        .cart-qty-btn { background: var(--bg-color); border: none; width: 28px; height: 28px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.2s; }
         .cart-qty-btn:hover { background: var(--border-color); }
-
-        .cart-qty-num {
-            width: 32px;
-            text-align: center;
-            font-size: 13px;
-            font-weight: 600;
-            border: none;
-            background: transparent;
-        }
-
-        .cart-row-remove {
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 15px;
-            transition: 0.2s;
-            text-align: center;
-        }
+        .cart-qty-num { width: 32px; text-align: center; font-size: 13px; font-weight: 600; border: none; background: transparent; }
+        .cart-row-remove { color: var(--text-muted); cursor: pointer; font-size: 15px; transition: 0.2s; text-align: center; }
         .cart-row-remove:hover { color: #e63946; }
-
-        .cart-summary-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            margin-top: 20px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-        }
-
-        .cart-summary-line {
-            display: flex;
-            justify-content: space-between;
-            width: 240px;
-            font-size: 14px;
-            margin-bottom: 6px;
-            color: var(--text-muted);
-        }
-
-        .cart-summary-total {
-            display: flex;
-            justify-content: space-between;
-            width: 240px;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-top: 5px;
-            margin-bottom: 15px;
-        }
-
-        .cart-action-btn-group {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-        .continue-shopping-link {
-            color: #e63946;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .cart-submit-red-btn {
-            background: #e63946; 
-            color: white;
-            text-decoration: none;
-            padding: 12px 35px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
-            border: none;
-        }
+        .cart-summary-wrapper { display: flex; flex-direction: column; align-items: flex-end; margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px; }
+        .cart-summary-line { display: flex; justify-content: space-between; width: 240px; font-size: 14px; margin-bottom: 6px; color: var(--text-muted); }
+        .cart-summary-total { display: flex; justify-content: space-between; width: 240px; font-size: 22px; font-weight: 700; color: var(--text-main); margin-top: 5px; margin-bottom: 15px; }
+        .cart-action-btn-group { display: flex; justify-content: space-between; width: 100%; align-items: center; margin-top: 15px; }
+        .continue-shopping-link { color: #e63946; text-decoration: none; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 5px; cursor: pointer; }
+        .cart-submit-red-btn { background: #e63946; color: white; text-decoration: none; padding: 12px 35px; border-radius: 4px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; transition: 0.3s; border: none; }
         .cart-submit-red-btn:hover { background: #c92a36; box-shadow: 0 4px 12px rgba(230, 57, 70, 0.2); }
 
         /* ÖZEL İSTEK BÖLÜMÜ */
@@ -484,17 +203,49 @@
         .error-text { color: #e63946; }
         footer { text-align: center; padding: 30px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 12px; background: var(--card-bg); }
 
-        /* MOBİL UYUMLULUK */
-        @media (max-width: 992px) { .special-container, .about-container { grid-template-columns: 1fr; flex-direction: column; gap: 30px; } .about-visual { height: 220px; } }
+        /* MOBİL VE TABLET UYUM AYARLARI (AÇILIR MENÜ ALTYAPISI) */
+        @media (max-width: 992px) { 
+            .special-container, .about-container { grid-template-columns: 1fr; flex-direction: column; gap: 30px; } 
+            .about-visual { height: 220px; } 
+        }
+        
         @media (max-width: 768px) { 
             header { padding: 15px 5%; } 
-            nav a { margin-left: 12px; font-size: 12px; } 
+            
+            /* Hamburger Menü Çizgisini Görünür Yap */
+            .menu-toggle { display: block; }
+            
+            /* Menüyü dikey açılır kutuya çevir */
+            nav { 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: var(--header-bg); 
+                border-bottom: 1px solid var(--border-color);
+                flex-direction: column; 
+                align-items: flex-start;
+                padding: 20px 5%;
+                gap: 15px;
+                display: none; /* Varsayılan olarak kapalı */
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            }
+            /* Menü açıldığında tetiklenecek sınıf */
+            nav.active { display: flex; }
+            
+            nav a { margin-left: 0; font-size: 18px; width: 100%; padding: 5px 0; } 
+            .cart-icon-container { margin-left: 0; padding-top: 5px; }
+            
+            /* Hero yazıları mobilde taşmasın */
             .hero h1 { font-size: 24px; white-space: normal; } 
             .hero p { font-size: 13px; white-space: normal; }
             .btn-group { flex-direction: column; gap: 10px; width: 100%; }
             .hero-btn { width: 100%; max-width: 280px; }
+            
             section { padding: 40px 5%; } 
+            .section-title { font-size: 26px; } /* Mobilde başlık makul boyuta düşsün */
             .category-bar-container { top: 55px; } 
+            #modalDetailContent { grid-template-columns: 1fr; } 
         }
     </style>
 </head>
@@ -502,26 +253,30 @@
 
     <header>
         <a href="#" class="logo">AKÇAY <span>DİJİTAL</span></a>
-        <nav>
-            <a href="#">Ana Sayfa</a>
-            <a href="#products">Ürünler</a>
-            <a href="#special-request">Özel İstek</a>
-            <a href="#about">Hakkımızda</a>
-            <a href="#contact">İletişim</a>
-            <div class="cart-icon-container" onclick="toggleCartModal(true)">
-                <i class="fa-solid fa-basket-shopping"></i>
-                <div class="cart-count" id="cartCount">0</div>
+        
+        <div class="nav-container">
+            <nav id="navMenu">
+                <a href="#" onclick="closeMenu()">Ana Sayfa</a>
+                <a href="#products" onclick="closeMenu()">Ürünler</a>
+                <a href="#special-request" onclick="closeMenu()">Özel İstek</a>
+                <a href="#about" onclick="closeMenu()">Hakkımızda</a>
+                <a href="#contact" onclick="closeMenu()">İletişim</a>
+                <div class="cart-icon-container" onclick="closeMenu(); toggleCartModal(true)">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <div class="cart-count" id="cartCount">0</div>
+                </div>
+            </nav>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
             </div>
-        </nav>
+        </div>
     </header>
 
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Fikirlerinizi <span>Katman Katman</span> Sanata Dönüştürün</h1>
-            
             <p>AKÇAY DİJİTAL olarak yüksek hassasiyetli 3D baskı teknolojisini modern tasarımlarla buluşturuyoruz.</p>
             <p class="last-line">Eviniz için estetik vazolar, kişisel figürler ve tamamen size özel üretimler.</p>
-            
             <div class="btn-group">
                 <a href="#products" class="hero-btn btn-primary">Koleksiyonu Keşfet</a>
                 <a href="#special-request" class="hero-btn btn-red">Özel İstek</a>
@@ -638,7 +393,6 @@
             <span class="modal-close" onclick="toggleCartModal(false)">&times;</span>
             <h3 style="font-size: 22px; font-weight: 600; color: var(--text-main);">Sepetim</h3>
             <div style="font-size: 12px; color: var(--text-muted); margin-top: -15px; margin-bottom: 10px;">Mağaza: AKÇAY DİJİTAL</div>
-            
             <div id="cartItemsContainer"></div>
         </div>
     </div>
@@ -654,6 +408,17 @@
 
         let allProducts = [];
         let cart = [];
+
+        // MOBİL MENÜ TETİKLEYİCİLERİ
+        function toggleMenu() {
+            const nav = document.getElementById('navMenu');
+            nav.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const nav = document.getElementById('navMenu');
+            nav.classList.remove('active');
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             fetchProductsFromSheet();
@@ -763,8 +528,7 @@
             if (!product) return;
 
             const modalContent = document.getElementById('modalDetailContent');
-            const descriptionText = product.description || "Bu harika 3D tasarım ürünümüz yüksek kalitede, doğa dostu malzemelerle atölyemizde butik olarak üretilmektedir. Detaylı bilgi ve özel ölçü talepleriniz için sepetinize ekleyerek bizimle iletişime geçebilirsiniz.";
-            
+            const descriptionText = product.description || "Bu harika 3D tasarım ürünümüz yüksek kalitede, doğa dostu malzemelerle atölyemizde butik olarak üretilmektedir.";
             const productCode = product.id || product.unique_id.replace('prod_', '');
 
             const categoryNames = {
@@ -778,47 +542,32 @@
             const displayCategory = categoryNames[rawCategory] || '3D Tasarım';
 
             let displayPrice = product.price.toString();
-            if (!displayPrice.includes('TL')) {
-                displayPrice += ' TL';
-            }
+            if (!displayPrice.includes('TL')) { displayPrice += ' TL'; }
 
             modalContent.innerHTML = `
                 <div>
                     <img src="${product.img || 'https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'}" class="detail-img" onerror="this.src='https://via.placeholder.com/300x220/ece7e1/2b2d42?text=AKCAY+DIJITAL'">
                 </div>
-                
                 <div class="detail-info">
                     <div>
                         <h2 style="font-size: 20px; margin-bottom: 5px; color:var(--text-main); font-weight:700;">${product.title}</h2>
-                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 3px;">
-                            <strong>Kategori:</strong> ${displayCategory}
-                        </div>
-                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">
-                            <strong>Ürün Kodu:</strong> #AKC-${productCode}
-                        </div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 3px;"><strong>Kategori:</strong> ${displayCategory}</div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 15px;"><strong>Ürün Kodu:</strong> #AKC-${productCode}</div>
                     </div>
-                    
                     <div>
                         <div style="font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--accent-pastel);">${displayPrice}</div>
-                        
                         <div style="font-size: 12px; font-weight: 600; margin-bottom: 5px;">Adet:</div>
                         <div class="qty-selector">
                             <button class="qty-btn" onclick="changeDetailQty(-1)">-</button>
                             <input type="number" id="detailQtyInput" class="qty-input" value="1" min="1" readonly>
                             <button class="qty-btn" onclick="changeDetailQty(1)">+</button>
                         </div>
-
                         <div style="display: flex; gap: 10px;">
-                            <button class="add-to-cart-btn" onclick="addMultipleToCart('${product.unique_id}')" style="flex: 2;">
-                                <i class="fa-solid fa-cart-plus"></i> Sepete Ekle
-                            </button>
-                            <button class="add-to-cart-btn" onclick="toggleProductModal(false); toggleCartModal(true);" style="flex: 1.2; background: var(--accent-pastel);">
-                                <i class="fa-solid fa-basket-shopping"></i> Sepete Git
-                            </button>
+                            <button class="add-to-cart-btn" onclick="addMultipleToCart('${product.unique_id}')" style="flex: 2;"><i class="fa-solid fa-cart-plus"></i> Sepete Ekle</button>
+                            <button class="add-to-cart-btn" onclick="toggleProductModal(false); toggleCartModal(true);" style="flex: 1.2; background: var(--accent-pastel);"><i class="fa-solid fa-basket-shopping"></i> Sepete Git</button>
                         </div>
                     </div>
                 </div>
-                
                 <div class="detail-full-width-desc">
                     <h4>Ürün Açıklaması</h4>
                     <p>${descriptionText}</p>
@@ -826,13 +575,6 @@
             `;
             toggleProductModal(true);
         }
-
-        document.getElementById('productModal').addEventListener('click', function(e) {
-            if(e.target === this) toggleProductModal(false);
-        });
-        document.getElementById('cartModal').addEventListener('click', function(e) {
-            if(e.target === this) toggleCartModal(false);
-        });
 
         function changeDetailQty(amount) {
             const qtyInput = document.getElementById('detailQtyInput');
@@ -877,7 +619,6 @@
         function updateCart() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             document.getElementById('cartCount').innerText = totalItems;
-
             const container = document.getElementById('cartItemsContainer');
             
             if (cart.length === 0) {
@@ -902,15 +643,12 @@
             cart.forEach(item => {
                 const rawPrice = item.price.toString().replace('TL', '').replace('.', '').replace(',', '.').trim();
                 const cleanPrice = parseFloat(rawPrice);
-                
-                let itemTotalNum = 0;
                 let itemTotalText = "";
                 let itemPriceText = item.price.toString();
-
                 if (!itemPriceText.includes('TL')) { itemPriceText += ' TL'; }
                 
                 if (!isNaN(cleanPrice)) {
-                    itemTotalNum = cleanPrice * item.quantity;
+                    let itemTotalNum = cleanPrice * item.quantity;
                     subTotal += itemTotalNum;
                     itemTotalText = `${itemTotalNum.toLocaleString('tr-TR')} TL`;
                 } else {
@@ -920,7 +658,7 @@
                 htmlContent += `
                     <div class="cart-row">
                         <div class="cart-product-cell">
-                            <img src="${item.img || 'https://via.placeholder.com/60x60'}" class="cart-product-img" onerror="this.src='https://via.placeholder.com/60x60'">
+                            <img src="${item.img || 'https://via.placeholder.com/60x60'}" class="cart-product-img">
                             <span class="cart-product-title">${item.title}</span>
                         </div>
                         <div class="cart-cell price">${itemPriceText}</div>
@@ -932,68 +670,41 @@
                             </div>
                         </div>
                         <div class="cart-cell total" style="text-align: right;">${itemTotalText}</div>
-                        <div class="cart-row-remove" onclick="removeFromCart('${item.unique_id}')">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </div>
+                        <div class="cart-row-remove" onclick="removeFromCart('${item.unique_id}')"><i class="fa-solid fa-trash-can"></i></div>
                     </div>
                 `;
-
                 whatsappMessageText += `📦 *${item.title}* - ${item.quantity} Adet (${itemTotalText})\n`;
             });
 
             htmlContent += `</div>`; 
-
             const kdvAmount = subTotal * 0.20; 
             const grandTotal = subTotal + kdvAmount; 
 
             htmlContent += `
                 <div class="cart-summary-wrapper">
-                    <div class="cart-summary-line">
-                        <span>Toplam:</span>
-                        <span>${subTotal.toLocaleString('tr-TR')} TL</span>
-                    </div>
-                    <div class="cart-summary-line">
-                        <span>KDV (%20):</span>
-                        <span>${kdvAmount.toLocaleString('tr-TR')} TL</span>
-                    </div>
+                    <div class="cart-summary-line"><span>Toplam:</span><span>${subTotal.toLocaleString('tr-TR')} TL</span></div>
+                    <div class="cart-summary-line"><span>KDV (%20):</span><span>${kdvAmount.toLocaleString('tr-TR')} TL</span></div>
                     <div style="width: 240px; border-top: 1px dashed var(--border-color); margin: 5px 0;"></div>
-                    <div class="cart-summary-total">
-                        <span style="font-size: 14px; font-weight:600; color:var(--text-muted); display:flex; align-items:center;">GENEL TOPLAM:</span>
-                        <span>${grandTotal.toLocaleString('tr-TR')} TL</span>
-                    </div>
+                    <div class="cart-summary-total"><span style="font-size: 14px; font-weight:600; color:var(--text-muted);">GENEL TOPLAM:</span><span>${grandTotal.toLocaleString('tr-TR')} TL</span></div>
                 </div>
             `;
 
-            whatsappMessageText += `\n-----------------------\n`;
-            whatsappMessageText += `💰 *Ara Toplam:* ${subTotal.toLocaleString('tr-TR')} TL\n`;
-            whatsappMessageText += `🌾 *KDV (%20):* ${kdvAmount.toLocaleString('tr-TR')} TL\n`;
-            whatsappMessageText += `🧮 *GENEL TOPLAM:* ${grandTotal.toLocaleString('tr-TR')} TL\n`;
-            whatsappMessageText += `\nSiparişimi onaylamak ve kargo/adres detaylarını görüşmek istiyorum.`;
+            whatsappMessageText += `\n-----------------------\n💰 *Ara Toplam:* ${subTotal.toLocaleString('tr-TR')} TL\n🌾 *KDV (%20):* ${kdvAmount.toLocaleString('tr-TR')} TL\n🧮 *GENEL TOPLAM:* ${grandTotal.toLocaleString('tr-TR')} TL\n\nSiparişimi onaylamak istiyorum.`;
             
-            const encodedMessage = encodeURIComponent(whatsappMessageText);
-
             htmlContent += `
                 <div class="cart-action-btn-group">
                     <a class="continue-shopping-link" onclick="toggleCartModal(false)"><i class="fa-solid fa-chevron-left"></i> Alışverişe Devam Et</a>
-                    <a href="https://wa.me/905326180952?text=${encodedMessage}" target="_blank" class="cart-submit-red-btn">
-                        SATIN AL <i class="fa-brands fa-whatsapp" style="font-size:16px;"></i>
-                    </a>
+                    <a href="https://wa.me/905326180952?text=${encodeURIComponent(whatsappMessageText)}" target="_blank" class="cart-submit-red-btn">SATIN AL <i class="fa-brands fa-whatsapp" style="font-size:16px;"></i></a>
                 </div>
             `;
-
             container.innerHTML = htmlContent;
         }
 
         function updateCartItemQty(uniqueId, amount) {
             const item = cart.find(p => p.unique_id === uniqueId);
             if (!item) return;
-
             item.quantity += amount;
-            if (item.quantity < 1) {
-                removeFromCart(uniqueId); 
-            } else {
-                updateCart();
-            }
+            if (item.quantity < 1) { removeFromCart(uniqueId); } else { updateCart(); }
         }
 
         function handleSpecialRequestSubmit(event) {
@@ -1001,25 +712,27 @@
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
-
-            const whatsappText = `👋 Merhaba AKÇAY DİJİTAL,\n\nBen *${name}* (${phone}). Web siteniz üzerinden özel bir 3D tasarım sipariş talebi göndermek istiyorum.\n\n🛠️ *İstediğim Model Detayları:*\n${message}\n\nMevcut modelin basılabilirliğini inceleyip fiyatlandırma konusunda bana dönüş yapabilir misiniz?`;
-            
+            const whatsappText = `👋 Merhaba AKÇAY DİJİTAL,\n\nBen *${name}* (${phone}). Web siteniz üzerinden özel bir 3D tasarım sipariş talebi göndermek istiyorum.\n\n🛠️ *İstediğim Model Detayları:*\n${message}`;
             window.open(`https://wa.me/905326180952?text=${encodeURIComponent(whatsappText)}`, '_blank');
         }
 
-        function toggleProductModal(show) {
-            document.getElementById('productModal').style.display = show ? 'flex' : 'none';
-        }
+        function toggleProductModal(show) { document.getElementById('productModal').style.display = show ? 'flex' : 'none'; }
+        function toggleCartModal(show) { document.getElementById('cartModal').style.display = show ? 'flex' : 'none'; }
 
-        function toggleCartModal(show) {
-            document.getElementById('cartModal').style.display = show ? 'flex' : 'none';
-        }
-
+        // Menünün dışına veya modalların arkasına tıklayınca kapatma kontrolleri
         window.onclick = function(event) {
             const productModal = document.getElementById('productModal');
             const cartModal = document.getElementById('cartModal');
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
             if (event.target == productModal) toggleProductModal(false);
             if (event.target == cartModal) toggleCartModal(false);
+            
+            // Mobilde menü açıkken dışarı tıklanırsa kapatma algılayıcısı
+            if (navMenu.classList.contains('active') && !navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                closeMenu();
+            }
         }
     </script>
 </body>
