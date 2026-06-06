@@ -40,29 +40,114 @@
         .cart-icon-container:hover i { color: var(--accent-pastel); }
         .cart-count { position: absolute; top: -10px; right: -10px; background: var(--accent-pastel); color: white; font-size: 11px; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-        /* HERO BÖLÜMÜ */
-        .hero {
-            height: 65vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 0 20px; background-color: #f3ede0;
+        /* HERO ALANI GRAFİKSEL DÜZENLEMELERİ */
+        .hero-section {
+            text-align: center; 
+            padding: 120px 20px 80px 20px; /* Üst menünün altında kalmaması için padding ayarlandı */
+            background-color: #f3ede0;
             background-image: 
                 linear-gradient(rgba(216, 140, 117, 0.22) 1.5px, transparent 1.5px),
                 linear-gradient(90deg, rgba(216, 140, 117, 0.22) 1.5px, transparent 1.5px);
-            background-size: 45px 45px; position: relative; overflow: hidden;
-            animation: patternMove 14s linear infinite; margin-top: 65px;
+            background-size: 45px 45px; 
+            position: relative; 
+            overflow: hidden;
+            animation: patternMove 14s linear infinite; 
+            margin-top: 65px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         @keyframes patternMove { 0% { background-position: 0 0; } 100% { background-position: 45px 45px; } }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(252,250,246,0.2) 0%, rgba(252,250,246,0.85) 80%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; }
-        .hero h1 { font-size: 40px; font-weight: 700; margin-bottom: 15px; color: var(--text-main); line-height: 1.2; }
-        .hero h1 span { color: var(--accent-pastel); }
-        .hero p { font-size: 15px; color: var(--text-main); max-width: 600px; margin-bottom: 30px; line-height: 1.6; }
+        .hero-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(252,250,246,0.2) 0%, rgba(252,250,246,0.85) 80%); z-index: 1; }
         
-        .btn-group { display: flex; gap: 15px; justify-content: center; }
-        .btn, .btn-secondary { display: inline-block; padding: 12px 26px; border-radius: 30px; font-weight: 600; font-size: 13px; text-decoration: none; transition: 0.3s; }
-        .btn { background: var(--text-main); color: #fff; }
-        .btn:hover { background: var(--accent-pastel); }
-        .btn-secondary { border: 2px solid var(--text-main); color: var(--text-main); }
-        .btn-secondary:hover { background: var(--text-main); color: #fff; }
+        .hero-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* İSTEDİĞİN ÖZEL ÇİZGİ: Ortada yoğun, kenarlara doğru silinen ve alt gölgeli şerit efekti */
+        .hero-divider {
+            width: 60%;
+            max-width: 500px;
+            height: 1px;
+            margin: 15px auto 25px auto;
+            background: linear-gradient(to right, rgba(43,45,66,0) 0%, rgba(43,45,66,0.8) 50%, rgba(43,45,66,0) 100%);
+            box-shadow: 0 4px 8px rgba(43, 45, 66, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-main);
+            max-width: 650px;
+            line-height: 1.6;
+            margin: 0 auto 35px auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* BUTON GRUBU VE MERKEZİ EŞİTLEME */
+        .hero-buttons-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Ortak Buton Tasarımı (Tam Merkezleme ve Eşit Boyutlar) */
+        .hero-btn {
+            width: 220px; 
+            height: 50px; 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center; 
+            text-align: center;
+            border-radius: 30px; /* Konseptin oval hatlarına uyum sağlaması için ideal yuvarlaklık */
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            border: none;
+        }
+
+        /* 1. Buton: Koleksiyonu Keşfet */
+        .primary-btn {
+            background: var(--text-main);
+            color: #ffffff;
+        }
+        .primary-btn:hover {
+            background: var(--accent-pastel);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 2. Buton: Özel İstek Talebi (Kırmızı Farklı Renk ve Tarz) */
+        .secondary-btn {
+            background: #e63946; 
+            color: #ffffff;
+        }
+        .secondary-btn:hover {
+            background: #c92a36;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.25);
+        }
 
         /* BÖLÜMLER */
         section { padding: 60px 8%; }
@@ -96,7 +181,7 @@
             position: fixed; 
             top: 0; left: 0; 
             width: 100%; height: 100%; 
-            background: rgba(25, 26, 38, 0.75); /* İstediğin gibi arkasını biraz daha kararttık */
+            background: rgba(25, 26, 38, 0.75); 
             backdrop-filter: blur(5px); 
             display: none; 
             justify-content: center; 
@@ -105,19 +190,16 @@
             cursor: pointer; 
         }
         
-        /* HEM DETAY HEM SEPET İÇİN TEK VE SABİT ÖLÇÜ */
+        /* HEM DETAY HEM SEPET İÇİR TEK VE SABİT ÖLÇÜ */
         .modal-box { 
             background: #ffffff !important; 
             color: #2b2d42 !important; 
             border-radius: 16px; 
             padding: 30px; 
             position: relative; 
-            
-            /* SÜPER FIX: Genişliği sepet sayfasıyla aynı ölçüde 850px'e kilitledik */
             width: 95%;
             max-width: 850px; 
-            min-height: 450px; /* Kutunun çok basık durmasını önlemek için ideal alt sınır */
-            
+            min-height: 450px; 
             max-height: 90vh; 
             overflow-y: auto; 
             display: flex; 
@@ -160,12 +242,11 @@
             display: flex; 
             flex-direction: column; 
             justify-content: space-between; 
-            height: 300px; /* Fotoğraf ile aynı hizada durması için */
+            height: 300px; 
         }
         
-        /* Açıklama kısmını alt tarafa tam genişlik yaymak için yeni sınıf */
         .detail-full-width-desc {
-            grid-column: 1 / -1; /* Sağ ve solu birleştirip alta yayar */
+            grid-column: 1 / -1; 
             border-top: 1px solid var(--border-color);
             padding-top: 15px;
             margin-top: 5px;
@@ -216,9 +297,8 @@
         .add-to-cart-btn:hover { background: var(--accent-pastel); }
         
         /* SEPET DETAYLARI */
-        /* YENİ GELİŞMİŞ SEPET TASARIMI (GÖRSELDEKİ FORMAT) */
         #cartModal .modal-box {
-            max-width: 850px; /* Görseldeki gibi geniş bir tablo alanı için */
+            max-width: 850px; 
             width: 95%;
         }
         
@@ -276,7 +356,6 @@
             font-weight: 500;
         }
 
-        /* Görseldeki Miktar Seçici Tasarımı (- 3 +) */
         .cart-qty-control {
             display: flex;
             align-items: center;
@@ -317,7 +396,6 @@
         }
         .cart-row-remove:hover { color: #e63946; }
 
-        /* Görseldeki Sağ Alt Özet Alanı */
         .cart-summary-wrapper {
             display: flex;
             flex-direction: column;
@@ -347,7 +425,6 @@
             margin-bottom: 15px;
         }
 
-        /* Görseldeki Kırmızı Satın Al / WhatsApp Butonu */
         .cart-action-btn-group {
             display: flex;
             justify-content: space-between;
@@ -368,7 +445,7 @@
         }
 
         .cart-submit-red-btn {
-            background: #e63946; /* Görseldeki kırmızı SATIN AL butonu */
+            background: #e63946; 
             color: white;
             text-decoration: none;
             padding: 12px 35px;
@@ -431,16 +508,15 @@
 
         /* MOBİL UYUMLULUK */
         @media (max-width: 992px) { .special-container, .about-container { grid-template-columns: 1fr; flex-direction: column; gap: 30px; } .about-visual { height: 220px; } }
-        @media (max-width: 768px) { header { padding: 15px 5%; } nav a { margin-left: 12px; font-size: 12px; } .hero h1 { font-size: 26px; } section { padding: 40px 5%; } .category-bar-container { top: 55px; } }
+        @media (max-width: 768px) { header { padding: 15px 5%; } nav a { margin-left: 12px; font-size: 12px; } .hero-title { font-size: 32px; } section { padding: 40px 5%; } .category-bar-container { top: 55px; } .hero-btn { width: 100%; max-width: 280px; } }
     </style>
 </head>
 <body>
 
-    <!-- MENÜ (Tüm Linkler Geri Geldi) -->
     <header>
         <a href="#" class="logo">AKÇAY <span>DIGITAL</span></a>
         <nav>
-            <a href="#home">Ana Sayfa</a>
+            <a href="#">Ana Sayfa</a>
             <a href="#products">Ürünler</a>
             <a href="#special-request">Özel İstek</a>
             <a href="#about">Hakkımızda</a>
@@ -452,23 +528,22 @@
         </nav>
     </header>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Fikirlerinizi <span>Katman Katman</span> Sanata Dönüştürün</h1>
-            <p>AKÇAY DIGITAL olarak yüksek hassasiyetli 3D baskı teknolojisini modern tasarımlarla buluşturuyoruz. Eviniz için estetik vazolar, kişisel figürler ve tamamen size özel üretimler.</p>
-            <div class="btn-group">
-                <a href="#products" class="btn">Koleksiyonu Keşfet</a>
-                <a href="#special-request" class="btn btn-secondary">Özel İstek</a>
-            </div>
+    <section class="hero-section">
+        <h1 class="hero-title">AKÇAY DİJİTAL</h1>
+        
+        <div class="hero-divider"></div>
+        
+        <p class="hero-subtitle">High-precision 3D printing solutions bringing your imagination to life with premium quality.</p>
+        
+        <div class="hero-buttons-group">
+            <a href="#products" class="hero-btn primary-btn">Koleksiyonu Keşfet</a>
+            <button class="hero-btn secondary-btn" onclick="document.getElementById('special-request').scrollIntoView({behavior: 'smooth'});">Özel İstek Talebi</button>
         </div>
     </section>
 
-    <!-- ÜRÜNLER GEÇİŞ ALANI -->
     <section id="products">
         <h2 class="section-title">Koleksiyon <span>Kataloğu</span></h2>
         
-        <!-- Kategori Barı -->
         <div class="category-bar-container">
             <div class="category-buttons">
                 <button class="category-btn active" onclick="filterCategory('all', this)">Tüm Ürünler</button>
@@ -480,13 +555,11 @@
             </div>
         </div>
 
-        <!-- DİNAMİK ÜRÜN GRİDİ -->
         <div class="products-grid" id="dynamicProductsGrid">
             <div class="status-message">Ürünler yükleniyor, lütfen bekleyin...</div>
         </div>
     </section>
 
-    <!-- ÖZEL İSTEK (Geri Geldi) -->
     <section class="special-request-section" id="special-request">
         <div class="special-container">
             <div class="special-info-side">
@@ -528,13 +601,12 @@
         </div>
     </section>
 
-    <!-- HAKKIMIZDA (Geri Geldi) -->
     <section class="about-section" id="about">
         <div class="about-container">
             <div class="about-text">
                 <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Biz <span>Kimiz?</span></h2>
                 <h3>Geleceğin Üretim Teknolojisi, Bugünün Estetiği</h3>
-                <p>AKÇAY DIGITAL, geleneksel dekorasyon anlayışını kırarak yaşam alanlarınıza yenilikçi dokunuşlar sunmak amacıyla kurulmuş bir 3D baskı ve tasarım atölyesidir [cite: Explicit statement about producing 3D-printed products for sale and establishing a professional business name, "AKÇAY DIGITAL". Conversation Date: 2026-06., Sustained engagement in designing and producing 3D-printed products like penguin and owl keychains, spiral vases, and themed wall clocks. Conversation Date: 2026-04 to 2026-06.].</p>
+                <p>AKÇAY DIGITAL, geleneksel dekorasyon anlayışını kırarak yaşam alanlarınıza yenilikçi dokunuşlar sunmak amacıyla kurulmuş bir 3D baskı ve tasarım atölyesidir.</p>
                 <p>Butik üretim felsefemizle, endüstriyel kalitedeki yazıcılarımızda doğa dostu malzemeler kullanarak pürüzsüz yüzeyler sunuyoruz.</p>
                 <div class="about-stats">
                     <div class="stat-box"><h4>7/24</h4><p>Aktif Üretim</p></div>
@@ -545,7 +617,6 @@
         </div>
     </section>
 
-    <!-- İLETİŞİM (Geri Geldi) -->
     <section class="info-section" id="contact">
         <h2 class="section-title">Bizimle <span>İletişime Geçin</span></h2>
         <div class="info-grid">
@@ -567,7 +638,6 @@
         </div>
     </section>
 
-    <!-- ÜRÜN DETAY MODALI -->
     <div class="modal-overlay" id="productModal">
         <div class="modal-box">
             <span class="modal-close" onclick="toggleProductModal(false)">&times;</span>
@@ -575,7 +645,6 @@
         </div>
     </div>
 
-    <!-- SEPET MODALI -->
     <div class="modal-overlay" id="cartModal">
         <div class="modal-box">
             <span class="modal-close" onclick="toggleCartModal(false)">&times;</span>
@@ -589,7 +658,8 @@
     <footer>
         <p>&copy; 2026 AKÇAY DIGITAL. Tüm Hakları Saklıdır.</p>
     </footer>
-<script>
+
+    <script>
         // Google E-Tablo Bağlantı Ayarları
         const SHEET_ID = '16Bv3BU5QmH8o8pR9tqsmjUNU8hcFAy8oNDzamLHcy1w'; 
         const SHEET_TITLE = 'Sheet1'; 
@@ -598,7 +668,6 @@
         let allProducts = [];
         let cart = [];
 
-        // Sayfa yüklendiğinde verileri çekmeye başla
         document.addEventListener('DOMContentLoaded', () => {
             fetchProductsFromSheet();
         });
@@ -624,12 +693,10 @@
             }
         }
 
-        // CSV verisini sütun başlıklarına göre dinamik ayıran fonksiyon
         function parseCSV(text) {
             const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
             if (lines.length <= 1) return [];
 
-            // Başlık satırını temizle ve küçük harfe çevir
             const headers = lines[0].split(',').map(h => h.replace(/^"|"$/g, '').toLowerCase().trim());
             
             const results = [];
@@ -642,7 +709,6 @@
                     entry[header] = values[index] || '';
                 });
 
-                // Başlık ve fiyat sütunları doluysa ürünü geçerli say
                 if (entry.title && entry.price) {
                     entry.unique_id = 'prod_' + i;
                     results.push(entry);
@@ -651,7 +717,6 @@
             return results;
         }
 
-        // Ürünleri ekrana basan fonksiyon (Filtreleme hatası düzeltildi)
         function renderProducts(products) {
             const gridElement = document.getElementById('dynamicProductsGrid');
             gridElement.innerHTML = '';
@@ -670,11 +735,7 @@
                 
                 const card = document.createElement('div');
                 card.className = 'product-card fade';
-                
-                // CRITICAL FIX: Filtreleme butonlarının algılayabilmesi için data-category eklendi
                 card.setAttribute('data-category', rawCategory);
-                
-                // Karta tıklandığında detay modal penceresini açar
                 card.onclick = () => openProductDetail(product.unique_id);
 
                 card.innerHTML = `
@@ -694,14 +755,11 @@
             });
         }
 
-        // Kategori Filtreleme Fonksiyonu (Tamamen Düzeltildi)
         function filterCategory(category, buttonElement) {
-            // Aktif buton rengini değiştir
             const buttons = document.querySelectorAll('.category-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             buttonElement.classList.add('active');
 
-            // Kartları göster veya gizle
             const cards = document.querySelectorAll('.product-card');
             cards.forEach(card => {
                 const cardCat = card.getAttribute('data-category');
@@ -713,7 +771,6 @@
             });
         }
 
-        // 1. GÜNCEL ÜRÜN DETAY FONKSİYONU (SEPETE GİT BUTONU EKLENDİ)
         function openProductDetail(uniqueId) {
             const product = allProducts.find(p => p.unique_id === uniqueId);
             if (!product) return;
@@ -733,7 +790,6 @@
             const rawCategory = (product.category || '').toLowerCase().trim();
             const displayCategory = categoryNames[rawCategory] || '3D Tasarım';
 
-            // E-tablodaki fiyata bakıp sonunda TL yoksa ekleyelim
             let displayPrice = product.price.toString();
             if (!displayPrice.includes('TL')) {
                 displayPrice += ' TL';
@@ -784,7 +840,6 @@
             toggleProductModal(true);
         }
 
-        // Detay sayfasındaki adet sayacını değiştiren fonksiyon
         function changeDetailQty(amount) {
             const qtyInput = document.getElementById('detailQtyInput');
             let currentQty = parseInt(qtyInput.value);
@@ -793,7 +848,6 @@
             qtyInput.value = currentQty;
         }
 
-        // GÜNCEL ÇOKLU ADET EKLEME FONKSİYONU (UYARI KALDIRILDI, PENCERE KAPANMAZ)
         function addMultipleToCart(uniqueId) {
             const product = allProducts.find(p => p.unique_id === uniqueId);
             if (!product) return;
@@ -808,36 +862,17 @@
                 cart.push({ ...product, quantity: chosenQty });
             }
 
-            // CRITICAL FIX: toggleProductModal(false); kaldırıldı! Pencere kapanmayacak.
             updateCart(); 
             
-            // "Sepete Ekle" butonunun metnini geçici olarak değiştirerek kullanıcıya eklendiğini belli edelim (alert yerine şık bir görsel geri bildirim)
             const addBtn = document.querySelector('.detail-info .add-to-cart-btn');
             const originalContent = addBtn.innerHTML;
             addBtn.innerHTML = `<i class="fa-solid fa-circle-check"></i> Eklendi!`;
-            addBtn.style.background = '#2ec4b6'; // Geçici yeşil renk
+            addBtn.style.background = '#2ec4b6'; 
             
             setTimeout(() => {
                 addBtn.innerHTML = originalContent;
-                addBtn.style.background = ''; // Eski rengine döner
+                addBtn.style.background = ''; 
             }, 1200);
-        }
-
-        // Sepete Ekleme Mekanizması
-        function addToCart(uniqueId) {
-            const product = allProducts.find(p => p.unique_id === uniqueId);
-            if (!product) return;
-
-            const existingItem = cart.find(item => item.unique_id === uniqueId);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
-
-            toggleProductModal(false);
-            updateCart();
-            alert(`🛒 ${product.title} sepetinize eklendi!`);
         }
 
         function removeFromCart(uniqueId) {
@@ -845,7 +880,7 @@
             updateCart();
         }
 
-        // 2. GÜNCEL SEPET FONKSİYONU (%20 KDV OTM. HESAPLAMA, TL BİRİMİ VE GENEL TOPLAM)
+        // SEPET GÜNCELLEME VE OTOMATİK KDV HESAPLAMA
         function updateCart() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             document.getElementById('cartCount').innerText = totalItems;
@@ -868,12 +903,10 @@
                 <div class="cart-item-list">
             `;
 
-            let subTotal = 0; // KDV hariç saf ürün toplamları
-
+            let subTotal = 0; 
             let whatsappMessageText = "👋 Merhaba AKÇAY DIGITAL, web sitenizden şu ürünleri sipariş etmek istiyorum:\n\n";
 
             cart.forEach(item => {
-                // Fiyat verisini temizleyip sayıya çeviriyoruz
                 const rawPrice = item.price.toString().replace('TL', '').replace('.', '').replace(',', '.').trim();
                 const cleanPrice = parseFloat(rawPrice);
                 
@@ -881,7 +914,6 @@
                 let itemTotalText = "";
                 let itemPriceText = item.price.toString();
 
-                // Ürün fiyatında TL yoksa ekleyelim
                 if (!itemPriceText.includes('TL')) { itemPriceText += ' TL'; }
                 
                 if (!isNaN(cleanPrice)) {
@@ -916,13 +948,11 @@
                 whatsappMessageText += `📦 *${item.title}* - ${item.quantity} Adet (${itemTotalText})\n`;
             });
 
-            htmlContent += `</div>`; // Liste bitti
+            htmlContent += `</div>`; 
 
-            // OTOMATİK MUHASEBE HESAPLAMALARI
-            const kdvAmount = subTotal * 0.20; // %20 KDV hesaplama
-            const grandTotal = subTotal + kdvAmount; // Genel Toplam (Ürünler + KDV)
+            const kdvAmount = subTotal * 0.20; 
+            const grandTotal = subTotal + kdvAmount; 
 
-            // Fatura Özeti Alanı (Görsel formatına uyarlandı)
             htmlContent += `
                 <div class="cart-summary-wrapper">
                     <div class="cart-summary-line">
@@ -941,7 +971,6 @@
                 </div>
             `;
 
-            // WhatsApp Sipariş Metni Güncellemesi
             whatsappMessageText += `\n-----------------------\n`;
             whatsappMessageText += `💰 *Ara Toplam:* ${subTotal.toLocaleString('tr-TR')} TL\n`;
             whatsappMessageText += `🌾 *KDV (%20):* ${kdvAmount.toLocaleString('tr-TR')} TL\n`;
@@ -962,20 +991,18 @@
             container.innerHTML = htmlContent;
         }
 
-        // Sepet içinden miktarı anlık artırıp azaltan fonksiyon
         function updateCartItemQty(uniqueId, amount) {
             const item = cart.find(p => p.unique_id === uniqueId);
             if (!item) return;
 
             item.quantity += amount;
             if (item.quantity < 1) {
-                removeFromCart(uniqueId); // 1'den az olursa sepetten siler
+                removeFromCart(uniqueId); 
             } else {
                 updateCart();
             }
         }
 
-        // Özel İstek Formu Gönderme Fonksiyonu (Geri Getirildi)
         function handleSpecialRequestSubmit(event) {
             event.preventDefault();
             const name = document.getElementById('name').value;
@@ -987,7 +1014,6 @@
             window.open(`https://wa.me/905326180952?text=${encodeURIComponent(whatsappText)}`, '_blank');
         }
 
-        // Pencere Kontrolleri
         function toggleProductModal(show) {
             document.getElementById('productModal').style.display = show ? 'flex' : 'none';
         }
@@ -996,12 +1022,10 @@
             document.getElementById('cartModal').style.display = show ? 'flex' : 'none';
         }
 
-	// BOŞLUĞA TIKLAYINCA MODALLARI KAPATAN SİHİRLİ ALGILAYICI
         window.onclick = function(event) {
             const productModal = document.getElementById('productModal');
             const cartModal = document.getElementById('cartModal');
             
-            // Eğer tıklanan yer içeriğin kendisi değil de arkadaki karartı (overlay) ise kapat
             if (event.target == productModal) {
                 toggleProductModal(false);
             }
