@@ -92,8 +92,23 @@
         .view-detail-text { font-size: 11px; color: var(--accent-pastel); font-weight: 500; }
 
         /* DETAY VE SEPET MODALLARI */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 2000; display: none; justify-content: center; align-items: center; }
-        .modal-box { background: var(--card-bg); width: 90%; max-width: 650px; border-radius: 16px; padding: 25px; position: relative; max-height: 90vh; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            display: none; /* Varsayılan gizli */
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            cursor: pointer; /* Boşluğun tıklanabilir olduğunu belirtir */
+        }
+        
+        /* İçerik kutusuna tıklandığında pencerenin kapanmasını önlemek için */
+        .modal-box {
+            cursor: default; 
+        }
         .modal-close { position: absolute; top: 15px; right: 15px; font-size: 22px; cursor: pointer; color: var(--text-muted); transition: 0.3s; }
         .modal-close:hover { color: var(--text-main); }
         
@@ -750,7 +765,7 @@
             qtyInput.value = currentQty;
         }
 
-        // Seçilen çoklu adeti sepete ekleyen yeni fonksiyon
+        // GÜNCEL ÇOKLU ADET EKLEME FONKSİYONU (UYARI KALDIRILDI, PENCERE KAPANMAZ)
         function addMultipleToCart(uniqueId) {
             const product = allProducts.find(p => p.unique_id === uniqueId);
             if (!product) return;
@@ -765,9 +780,19 @@
                 cart.push({ ...product, quantity: chosenQty });
             }
 
-            toggleProductModal(false);
-            updateCart();
-            alert(`🛒 ${chosenQty} Adet ${product.title} sepetinize eklendi!`);
+            // CRITICAL FIX: toggleProductModal(false); kaldırıldı! Pencere kapanmayacak.
+            updateCart(); 
+            
+            // "Sepete Ekle" butonunun metnini geçici olarak değiştirerek kullanıcıya eklendiğini belli edelim (alert yerine şık bir görsel geri bildirim)
+            const addBtn = document.querySelector('.detail-info .add-to-cart-btn');
+            const originalContent = addBtn.innerHTML;
+            addBtn.innerHTML = `<i class="fa-solid fa-circle-check"></i> Eklendi!`;
+            addBtn.style.background = '#2ec4b6'; // Geçici yeşil renk
+            
+            setTimeout(() => {
+                addBtn.innerHTML = originalContent;
+                addBtn.style.background = ''; // Eski rengine döner
+            }, 1200);
         }
 
         // Sepete Ekleme Mekanizması
@@ -941,6 +966,20 @@
 
         function toggleCartModal(show) {
             document.getElementById('cartModal').style.display = show ? 'flex' : 'none';
+        }
+
+	// BOŞLUĞA TIKLAYINCA MODALLARI KAPATAN SİHİRLİ ALGILAYICI
+        window.onclick = function(event) {
+            const productModal = document.getElementById('productModal');
+            const cartModal = document.getElementById('cartModal');
+            
+            // Eğer tıklanan yer içeriğin kendisi değil de arkadaki karartı (overlay) ise kapat
+            if (event.target == productModal) {
+                toggleProductModal(false);
+            }
+            if (event.target == cartModal) {
+                toggleCartModal(false);
+            }
         }
     </script>
 </body>
